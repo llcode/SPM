@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="domain">
+	<class name="Finance">
+		<id name="financeid">
+			<generator class="sequence">
+				<param name="sequence">seq_finance</param>
+			</generator>
+		</id>
+		<property name="classname"></property>
+		<property name="excutedate"></property>
+		<property name="status"></property>
+		<property name="reason"></property>
+		<property name="person"></property>
+		<property name="money"></property>
+		<property name="balance"></property>
+		<many-to-one name="userinfo" column="userinfoid"></many-to-one>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="domain">
+	<class name="Userinfo">
+		<id name="userinfoid">
+			<generator class="sequence">
+				<param name="sequence">seq_userinfo</param>
+			</generator>
+		</id>
+		<property name="sname"></property>
+		<property name="sno"></property>
+		<property name="gender"></property>
+		<property name="birthday"></property>
+		<property name="QQ"></property>
+		<property name="Tel"></property>
+		<property name="email"></property>
+		<property name="classname"></property>
+		<property name="dormitory"></property>
+		<property name="hometown"></property>
+		<many-to-one name="user" column="userid"></many-to-one>
+		<set name="financeCreater">
+			<!--  column:在当前类所关联的另一方对应的表的外键名  -->
+			<key column="userinfoid"></key>
+			<one-to-many class="Finance" />
+		</set>
+	</class>
+</hibernate-mapping>

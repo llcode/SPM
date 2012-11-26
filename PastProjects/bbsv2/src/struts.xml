@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="default" namespace="/" extends="struts-default">
+		<!-- 当把action的生命周期交给Spring托管以后，class应该填写该action在Spring配置文件中所对应的actionBean的id -->
+
+		<action name="userCountService" class="userCountAction">
+			<result name="phonebook">/user/phonebook.jsp</result>
+			<result name="userManagerList">/user/userManagerList.jsp</result>
+			<result name="userUpdate">/user/userUpdate.jsp</result>
+			<result name="useredit">/user/useredit.jsp</result>
+			<result name="userCenter">/user/userCenter.jsp</result>
+			<result name="pwdedit">/user/pwdedit.jsp</result>
+			<result name="failLogin">/login.jsp</result>
+			<result name="SuccessLogin">/index.jsp</result>
+			<result name="failRegister">/register.jsp</result>
+			<result name="logout">/login.jsp</result>
+		</action>
+	</package>
+
+	<package name="bbs" namespace="/bbs" extends="struts-default">
+		<action name="bbsService" class="bbsAction">
+			<result name="index">index.jsp</result>
+			<result name="addSection">addSection.jsp</result>
+			<result name="sectionManage">sectionManage.jsp</result>
+			<result name="editSection">editSection.jsp</result>
+			<result name="intoTopic">topicList.jsp</result>
+		</action>
+	</package>
+
+	<package name="album" namespace="/album" extends="struts-default">
+		<action name="albumService" class="albumAction">
+			<result name="index">index.jsp</result>
+		</action>
+	</package>
+</struts>

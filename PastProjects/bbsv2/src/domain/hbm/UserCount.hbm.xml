@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="domain">
+	<class name="UserCount">
+		<id name="userid">
+			<generator class="sequence">
+				<param name="sequence">seq_user</param>
+			</generator>
+		</id>
+		<property name="username"></property>
+		<property name="pwd"></property>
+		<property name="power"></property>
+		<property name="classPower"></property>
+		<property name="status"></property>
+		<property name="avatar"></property>
+		<property name="sign"></property>
+		<set name="createActivitys">
+			<!-- column:在当前类所关联的另一方对应的表的外键名 -->
+			<key column="userid"></key>
+			<one-to-many class="Activity" />
+		</set>
+
+		<set name="attendActivitys" table="useractivity">
+			<!-- column:在当前类所关联的另一方对应的表的外键名 -->
+			<key column="userid"></key>
+			<many-to-many column="activityid" class="Activity" />
+		</set>
+
+		<set name="albums">
+			<key column="userid"></key>
+			<one-to-many class="Album" />
+		</set>
+		<set name="topics">
+			<key column="userid"></key>
+			<one-to-many class="Topic" />
+		</set>
+		<set name="sections" table="sectionuser">
+			<!-- column:在当前类所关联的另一方对应的表的外键名 -->
+			<key column="userid"></key>
+			<many-to-many column="sectionid" class="Section" />
+		</set>
+		<set name="fromMsgs">
+			<!-- column:在当前类所关联的另一方对应的表的外键名 -->
+			<key column="fromid"></key>
+			<one-to-many class="Msg" />
+		</set>
+		<set name="toMsgs">
+			<!-- column:在当前类所关联的另一方对应的表的外键名 -->
+			<key column="toid"></key>
+			<one-to-many class="Msg" />
+		</set>
+		<set name="replys">
+			<key column="userid"></key>
+			<one-to-many class="Reply" />
+		</set>
+
+		<one-to-one name="userinfo" property-ref="user"></one-to-one>
+
+	</class>
+</hibernate-mapping>

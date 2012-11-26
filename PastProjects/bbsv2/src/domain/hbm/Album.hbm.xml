@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="domain">
+	<class name="Album">
+		<id name="albumid">
+			<generator class="sequence">
+				<param name="sequence">seq_album</param>
+			</generator>
+		</id>
+		<property name="name"></property>
+		<property name="description"></property>
+		<property name="power"></property>
+		<property name="cover"></property>
+		<property name="status"></property>
+		<many-to-one name="owner" column="userid"></many-to-one>
+		<set name="photos">
+			<key column="albumid"></key>
+			<one-to-many class="Photo"/>
+		</set>
+	</class>
+</hibernate-mapping>

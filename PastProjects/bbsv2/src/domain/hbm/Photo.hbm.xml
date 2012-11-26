@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="domain">
+	<class name="Photo">
+		<id name="photoid">
+			<generator class="sequence">
+				<param name="sequence">seq_Cont</param>
+			</generator>
+		</id>
+		<property name="title"></property>
+		<property name="description"></property>
+		<property name="picurl"></property>
+		<property name="picliteurl"></property>
+		<property name="uploadtime"></property>
+		<many-to-one name="album" column="albumid"></many-to-one>
+		
+		<set name="replys">
+			<!-- column:在当前类所关联的另一方对应的表的外键名 -->
+			<key column="parentid"></key>
+			<one-to-many class="Reply" />
+		</set>
+		
+		
+	</class>
+</hibernate-mapping>

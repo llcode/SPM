@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="domain">
+	<class name="Reply">
+		<id name="replyid">
+			<generator class="sequence">
+				<param name="sequence">seq_reply</param>
+			</generator>
+		</id>
+		<property name="parentid"></property>
+		<property name="content"></property>
+		<property name="type"></property>
+		<property name="createtime"></property>
+		<property name="modifytime"></property>
+		
+		<many-to-one name="user" column="userid"></many-to-one>
+	</class>
+</hibernate-mapping>

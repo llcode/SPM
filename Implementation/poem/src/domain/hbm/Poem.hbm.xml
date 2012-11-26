@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="domain">
+	<class name="Poem">
+		<id name="pid">
+			<generator class="sequence">
+				<param name="sequence">seq_poem</param>
+			</generator>
+		</id>
+		<property name="title"></property>
+		<property name="content"></property>
+		<property name="translation"></property>
+		<property name="explanation"></property>
+		<property name="appreciation"></property>
+
+		<many-to-one name="author" column="aid"></many-to-one>
+		
+		<set name="newLists">
+			<!-- column:在当前类所关联的另一方对应的表的外键名 -->
+			<key column="pid"></key>
+			<one-to-many class="MyNewPoem" />
+		</set>
+
+		<set name="favoriteLists" table="favorite_poem">
+			<!-- column:在当前类所关联的另一方对应的表的外键名 -->
+			<key column="pid"></key>
+			<many-to-many column="fid" class="Favorite" />
+		</set>
+	</class>
+</hibernate-mapping>

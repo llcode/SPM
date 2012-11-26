@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<!-- 配置数据源 javax.sql.DataSource -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"></property>
+		<property name="url" value="jdbc:oracle:thin:@localhost:1521:orcl"></property>
+		<property name="username" value="scott"></property>
+		<property name="password" value="tiger"></property>
+	</bean>
+
+	<!-- 配置SessionFactory -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+			</props>
+		</property>
+		<property name="mappingLocations">
+			<list>
+				<value>classpath:domain/hbm/*.hbm.xml</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- 配置公共Hibernate template, session -->
+	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="baseDao" class="dao.impl.BaseDaoImpl" abstract="true">
+		<property name="template" ref="hibernateTemplate"></property>
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<!-- 配置Author模块 -->
+	<bean id="authorDao" class="dao.impl.AuthorDaoImpl" parent="baseDao"></bean>
+	<bean id="authorAction" class="action.AuthorAction" scope="prototype">
+		<property name="authorDao" ref="authorDao"></property>
+	</bean>
+	
+	<!-- 配置Favorite模块 -->
+	<bean id="favoriteDao" class="dao.impl.FavoriteDaoImpl" parent="baseDao"></bean>
+	<bean id="favoriteAction" class="action.FavoriteAction" scope="prototype">
+		<property name="favoriteDao" ref="favoriteDao"></property>
+		<property name="poemDao" ref="poemDao"></property>
+	</bean>
+	
+	<!-- 配置MyNewPoem模块 -->
+	<bean id="myNewPoemDao" class="dao.impl.MyNewPoemDaoImpl" parent="baseDao"></bean>
+	<bean id="myNewPoemAction" class="action.MyNewPoemAction" scope="prototype">
+		<property name="myNewPoemDao" ref="myNewPoemDao"></property>
+		<property name="userCountDao" ref="userCountDao"></property>
+	</bean>
+	
+	<!-- 配置Poem模块 -->
+	<bean id="poemDao" class="dao.impl.PoemDaoImpl" parent="baseDao"></bean>
+	<bean id="poemAction" class="action.PoemAction" scope="prototype">
+		<property name="poemDao" ref="poemDao"></property>
+		<property name="authorDao" ref="authorDao"></property>
+	</bean>
+	
+	<!-- 配置UserCount模块 -->
+	<bean id="userCountDao" class="dao.impl.UserCountDaoImpl" parent="baseDao"></bean>
+	<bean id="userCountAction" class="action.UserCountAction" scope="prototype">
+		<property name="userCountDao" ref="userCountDao"></property>
+	</bean>
+</beans>

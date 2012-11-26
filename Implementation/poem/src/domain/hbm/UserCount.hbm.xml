@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="domain">
+	<class name="UserCount">
+		<id name="userid">
+			<generator class="sequence">
+				<param name="sequence">seq_usercount</param>
+			</generator>
+		</id>
+		<property name="name"></property>
+		<property name="email"></property>
+		<property name="password"></property>
+
+		<set name="favorites">
+			<!-- column:在当前类所关联的另一方对应的表的外键名 -->
+			<key column="userid"></key>
+			<one-to-many class="Favorite" />
+		</set>
+
+		<set name="newPoemInfos">
+			<!-- column:在当前类所关联的另一方对应的表的外键名 -->
+			<key column="userid"></key>
+			<one-to-many class="MyNewPoem" />
+		</set>
+	</class>
+</hibernate-mapping>

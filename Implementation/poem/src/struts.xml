@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="default" namespace="/" extends="struts-default">
+		<!-- 当把action的生命周期交给Spring托管以后，class应该填写该action在Spring配置文件中所对应的actionBean的id -->
+		
+		<action name="authorService" class="authorAction">
+			<result name="index">/index.jsp</result>
+		</action>
+		
+		<action name="favoriteService" class="favoriteAction">
+			<result name="index">/index.jsp</result>
+		</action>
+		<action name="myNewPoemService" class="myNewPoemAction">
+			<result name="index">/index.jsp</result>
+			<result name="addMyNewPoem">/add.jsp</result>
+		</action>
+		
+		<action name="poemService" class="poemAction">
+			<result name="index">/index.jsp</result>
+			<result name="addPoem">/add.jsp</result>
+		</action>
+		
+		<action name="userCountService" class="userCountAction">
+			<result name="index">/index.jsp</result>
+		</action>
+		
+	</package>
+</struts>

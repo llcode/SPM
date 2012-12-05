@@ -1,6 +1,11 @@
 package domain;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
 import java.util.Set;
+import java.util.regex.Pattern;
 
 public class Poem {
 
@@ -86,6 +91,32 @@ public class Poem {
 
 	public void setNewLists(Set<MyNewPoem> newLists) {
 		this.newLists = newLists;
+	}
+
+	// get the sentences from a poem.
+	public List<String> getSentences() {
+		String punctuations = "[,.!?;£¬¡££¡£¿£»]";
+		String[] sentences = content.split(punctuations);
+		return new ArrayList<String>(Arrays.asList(sentences));
+	}
+
+	// get the punctuations from a poem.
+	public String getPuncs() {
+		String punctuations = "[^,.!?;£¬¡££¡£¿£»]";
+		return Pattern.compile(punctuations).matcher(content).replaceAll("");
+	}
+
+	// generate the blanks from a poem.
+	public List<Integer> geneRand() {
+		Random rand = new Random();
+		int length = getSentences().size();
+		List<Integer> res = new ArrayList<Integer>();
+		while (res.size() < length / 2) {
+			Integer i = rand.nextInt(length);
+			if (!res.contains(i))
+				res.add(i);
+		}
+		return res;
 	}
 
 }

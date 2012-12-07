@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.opensymphony.xwork2.ActionContext;
+
 import dao.MyNewPoemDao;
 import dao.UserCountDao;
 import domain.Item;
@@ -102,10 +104,9 @@ public class MyNewPoemAction {
 	}
 
 	public String addMyNewPoem() {
-		// Later, the userid should be get from user session.
 		MyNewPoem newPoem = new MyNewPoem();
-		UserCount user = new UserCount();
-		user.setUserid(200);
+		UserCount user = (UserCount) ActionContext.getContext().getSession().get("userInSession");
+		System.out.println("user in session is : " + user.getName());
 		newPoem.setUser(user);
 		newPoem.setPoem(poem);
 		newPoem.setCount(0);
@@ -129,7 +130,8 @@ public class MyNewPoemAction {
 						+ " with sentenceid : " + item.getSentenceid());
 				Item right = findByPidAndSid(item.getPoemid(),
 						item.getSentenceid());
-				if (right.getSentence().equalsIgnoreCase(item.getSentence().trim())) {
+				if (right.getSentence().equalsIgnoreCase(
+						item.getSentence().trim())) {
 					correct++;
 					total++;
 				} else {
@@ -149,8 +151,7 @@ public class MyNewPoemAction {
 		List<MyNewPoem> testPoems = new ArrayList<MyNewPoem>();
 
 		// TODO: get user from session.
-		UserCount user = new UserCount();
-		user.setUserid(200);
+		UserCount user = (UserCount) ActionContext.getContext().getSession().get("userInSession");
 		List<MyNewPoem> allNewPoems = myNewPoemDao.queryAll(user);
 		for (MyNewPoem myNewPoem : allNewPoems) {
 			Date createday = myNewPoem.getCreatedate();

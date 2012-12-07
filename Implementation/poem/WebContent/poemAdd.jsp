@@ -5,14 +5,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>add poem</title>
+<title>添加诗词</title>
 </head>
 <body>
 	<center>
 		<h4>请输入诗词信息：</h4>
 		<s:form action="poemService!add">
 			<s:textfield label="题目" name="poem.title"></s:textfield>
-			<s:textfield label="作者" name="authorName"></s:textfield>
+			<s:textfield label="作者" name="poem.author.name"></s:textfield>
 			<s:textarea label="内容" name="poem.content" cols="40" rows="5"></s:textarea>
 			<s:textarea label="译文" name="poem.translation" cols="40" rows="5"></s:textarea>
 			<s:textarea label="解释" name="poem.explanation" cols="40" rows="5"></s:textarea>

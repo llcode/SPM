@@ -26,8 +26,8 @@ Your score is
 				<td><s:property value="sentence" /></td>
 		</s:if>
 		<s:else>
-			<td><s:property value="sentence" /></td>
-			</tr>
+				<td><s:property value="sentence" /></td>
+			<!-- Seems that </tr> can be omitted, or there will be a warning. -->
 		</s:else>
 	</s:iterator>
 </table>

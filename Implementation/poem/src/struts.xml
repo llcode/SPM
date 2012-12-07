@@ -7,26 +7,37 @@
 		<!-- 当把action的生命周期交给Spring托管以后，class应该填写该action在Spring配置文件中所对应的actionBean的id -->
 		
 		<action name="authorService" class="authorAction">
-			<result name="index">/index.jsp</result>
+			<result name="index">index.jsp</result>
 		</action>
 		
 		<action name="favoriteService" class="favoriteAction">
-			<result name="index">/index.jsp</result>
+			<result name="index">favoriteList.jsp</result>
+			<result name="add">favoriteAdd.jsp</result>
+			<result name="edit">favoriteUpdate.jsp</result>
+			<result name="show">favoriteShow.jsp</result>
 		</action>
 		<action name="myNewPoemService" class="myNewPoemAction">
-			<result name="index">/index.jsp</result>
-			<result name="goTest">/goTest.jsp</result>
-			<result name="goResult">/goResult.jsp</result>
-			<result name="addMyNewPoem">/add.jsp</result>
+			<result name="index">index.jsp</result>
+			<result name="goTest">goTest.jsp</result>
+			<result name="goResult">goResult.jsp</result>
+			<result name="addMyNewPoem">add.jsp</result>
 		</action>
 		
 		<action name="poemService" class="poemAction">
-			<result name="index">/index.jsp</result>
-			<result name="addPoem">/add.jsp</result>
+			<result name="index">poemList.jsp</result>
+			<result name="add">poemAdd.jsp</result>
+			<result name="edit">poemUpdate.jsp</result>
+			<result name="show">poemShow.jsp</result>
 		</action>
 		
 		<action name="userCountService" class="userCountAction">
-			<result name="index">/index.jsp</result>
+			<result name="index">index.jsp</result>
+			<result name="error">/login.jsp</result>
+			<result name="registsuccess">login.jsp</result>
+			<result name="gologin">login.jsp</result>
+			<result name="regist" type="redirect">regist.jsp</result>
+			<result name="queryById">showInformation.jsp</result>
+			<result name="goMain">main.jsp</result>
 		</action>
 		
 	</package>

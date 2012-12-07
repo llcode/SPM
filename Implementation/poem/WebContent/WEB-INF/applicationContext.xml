@@ -43,31 +43,31 @@
 	<bean id="authorAction" class="action.AuthorAction" scope="prototype">
 		<property name="authorDao" ref="authorDao"></property>
 	</bean>
-	
+
 	<!-- 配置Favorite模块 -->
 	<bean id="favoriteDao" class="dao.impl.FavoriteDaoImpl" parent="baseDao"></bean>
 	<bean id="favoriteAction" class="action.FavoriteAction" scope="prototype">
 		<property name="favoriteDao" ref="favoriteDao"></property>
-		<property name="poemDao" ref="poemDao"></property>
 	</bean>
-	
+
 	<!-- 配置MyNewPoem模块 -->
 	<bean id="myNewPoemDao" class="dao.impl.MyNewPoemDaoImpl" parent="baseDao"></bean>
 	<bean id="myNewPoemAction" class="action.MyNewPoemAction" scope="prototype">
 		<property name="myNewPoemDao" ref="myNewPoemDao"></property>
 		<property name="userCountDao" ref="userCountDao"></property>
 	</bean>
-	
+
 	<!-- 配置Poem模块 -->
 	<bean id="poemDao" class="dao.impl.PoemDaoImpl" parent="baseDao"></bean>
 	<bean id="poemAction" class="action.PoemAction" scope="prototype">
 		<property name="poemDao" ref="poemDao"></property>
 		<property name="authorDao" ref="authorDao"></property>
 	</bean>
-	
+
 	<!-- 配置UserCount模块 -->
 	<bean id="userCountDao" class="dao.impl.UserCountDaoImpl" parent="baseDao"></bean>
 	<bean id="userCountAction" class="action.UserCountAction" scope="prototype">
 		<property name="userCountDao" ref="userCountDao"></property>
+		<property name="favoriteDao" ref="favoriteDao"></property>
 	</bean>
 </beans>

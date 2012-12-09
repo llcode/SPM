@@ -121,8 +121,8 @@ public class MyNewPoemAction {
 		return "index";
 	}
 
-	// TODO: We also need to add a remove poem method.
 	public String removePoem() {
+		myNewPoemDao.delete(myNewPoem);
 		return index();
 	}
 
@@ -154,7 +154,7 @@ public class MyNewPoemAction {
 				System.out.println("Oops, another null pointer exception!");
 			}
 		}
-		result = correct * 1.0 / total * 1.0;
+		result = correct / total;
 		return "goResult";
 	}
 
@@ -208,7 +208,6 @@ public class MyNewPoemAction {
 				item.setPunc(puncs.charAt(i));
 				if (blanks.contains(i)) {
 					item.setExist(false);
-					;
 				} else {
 					item.setExist(true);
 				}

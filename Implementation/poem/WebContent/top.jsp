@@ -10,7 +10,7 @@
 <a href="poemService!index">唐诗宋词</a>
 <a href="authorService!index">诗人风采</a>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="favoriteService!index">收藏卡</a>
+<a href="favoriteService!index">我的收藏卡</a>
 <a href="myNewPoemService!index">生诗词库</a>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <a

@@ -23,6 +23,11 @@ public class MyNewPoemDaoImpl extends BaseDaoImpl implements MyNewPoemDao {
 	}
 
 	@Override
+	public void delete(MyNewPoem myNewPoem) {
+		template.delete(myNewPoem);
+	}
+
+	@Override
 	@SuppressWarnings("unchecked")
 	public List<MyNewPoem> queryAll(UserCount user) {
 		Session session = sessionFactory.openSession();

@@ -18,6 +18,9 @@
 	<br>
 	<s:property value="poem.content" />
 	<br>
+	<a
+		href="myNewPoemService!removePoem?myNewPoem.newpid=<s:property value="newpid"/>">从生诗词表删除</a>
+	<br><hr>
 </s:iterator>
 <a href="myNewPoemService!goTest">开始测试吧</a>
 </body>

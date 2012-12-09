@@ -5,15 +5,20 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>添加收藏列表</title>
+<title>生诗词表</title>
 </head>
 <body>
 <s:include value="top.jsp"></s:include>
-<h4>请输入收藏列表信息：</h4>
-<s:form action="favoriteService!add">
-	<s:textfield label="收藏列表名称" name="favorite.name" />
-	<s:submit value="提交" />
-</s:form>
-<a href="favoriteService!index">所有列表</a>
+<h1>生诗词列表</h1>
+<s:iterator value="myNewPoems">
+	<a href="poemService!show?poem.pid=<s:property value="poem.pid" />"><s:property
+		value="poem.title" /></a>
+	<br>
+	<s:property value="%{poem.author.getName()}" />
+	<br>
+	<s:property value="poem.content" />
+	<br>
+</s:iterator>
+<a href="myNewPoemService!goTest">开始测试吧</a>
 </body>
 </html>

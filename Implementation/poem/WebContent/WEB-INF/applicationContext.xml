@@ -48,6 +48,7 @@
 	<bean id="favoriteDao" class="dao.impl.FavoriteDaoImpl" parent="baseDao"></bean>
 	<bean id="favoriteAction" class="action.FavoriteAction" scope="prototype">
 		<property name="favoriteDao" ref="favoriteDao"></property>
+		<property name="poemDao" ref="poemDao"></property>
 	</bean>
 
 	<!-- 配置MyNewPoem模块 -->
@@ -62,6 +63,7 @@
 	<bean id="poemAction" class="action.PoemAction" scope="prototype">
 		<property name="poemDao" ref="poemDao"></property>
 		<property name="authorDao" ref="authorDao"></property>
+		<property name="myNewPoemDao" ref="myNewPoemDao"></property>
 	</bean>
 
 	<!-- 配置UserCount模块 -->

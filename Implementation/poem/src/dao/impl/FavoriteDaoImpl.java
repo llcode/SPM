@@ -2,10 +2,10 @@ package dao.impl;
 
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.Hibernate;
 import org.hibernate.Transaction;
 import org.hibernate.classic.Session;
-import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
 
 import dao.FavoriteDao;
@@ -33,15 +33,19 @@ public class FavoriteDaoImpl extends BaseDaoImpl implements FavoriteDao {
 	public List<Favorite> queryAll(UserCount user) {
 		// Two ways to query all favorites.
 
-		// Session session = sessionFactory.openSession();
-		// Criteria criteria = session.createCriteria(Favorite.class);
-		// criteria.add(Restrictions.eq("owner", user));
-		// List<Favorite> list = criteria.list();
-		// session.close();
-
-		DetachedCriteria criteria = DetachedCriteria.forClass(Favorite.class);
+		Session session = sessionFactory.openSession();
+		Criteria criteria = session.createCriteria(Favorite.class);
 		criteria.add(Restrictions.eq("owner", user));
-		List<Favorite> list = template.findByCriteria(criteria);
+		List<Favorite> list = criteria.list();
+		for (Favorite favorite : list) {
+			Hibernate.initialize(favorite.getPoemLists());
+		}
+		session.close();
+
+		// DetachedCriteria criteria =
+		// DetachedCriteria.forClass(Favorite.class);
+		// criteria.add(Restrictions.eq("owner", user));
+		// List<Favorite> list = template.findByCriteria(criteria);
 		return list;
 	}
 

@@ -1,11 +1,17 @@
 package dao.impl;
 
+import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.hibernate.Criteria;
 import org.hibernate.Hibernate;
+import org.hibernate.Transaction;
 import org.hibernate.classic.Session;
 import dao.PoemDao;
+import domain.Favorite;
+import domain.MyNewPoem;
 import domain.Poem;
 
 public class PoemDaoImpl extends BaseDaoImpl implements PoemDao {
@@ -46,6 +52,25 @@ public class PoemDaoImpl extends BaseDaoImpl implements PoemDao {
 	@Override
 	public void update(Poem poem) {
 		template.update(poem);
+	}
+
+	@Override
+	public void addToFavorites(List<Favorite> favorites, Poem poem) {
+		Session session = sessionFactory.openSession();
+		Transaction tx = session.beginTransaction();
+		Poem p = (Poem) session.get(Poem.class, poem.getPid());
+		Set<Favorite> set = new HashSet<Favorite>(favorites);
+		p.setFavoriteLists(set);
+		session.update(p);
+		tx.commit();
+		session.close();
+	}
+
+	@Override
+	public void addToNewPoems(MyNewPoem myNewPoem) {
+		myNewPoem.setCount(0);
+		myNewPoem.setCreatedate(new Date(System.currentTimeMillis()));
+		template.save(myNewPoem);
 	}
 
 }

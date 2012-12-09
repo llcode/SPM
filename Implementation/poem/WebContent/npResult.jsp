@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<s:include value="top.jsp"></s:include>
 Your score is
 <s:property value="%{result*100}" />
 <br>

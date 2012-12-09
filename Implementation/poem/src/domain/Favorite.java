@@ -42,4 +42,16 @@ public class Favorite {
 	public void setPoemLists(Set<Poem> poemLists) {
 		this.poemLists = poemLists;
 	}
+
+	// This method is used in FavoriteAction to check whether a poem is in poem list
+	// Because the Set contains method would check every property of poem including references.
+	// So they are impossible to be equal. ^-^
+	public boolean hasPoem(Poem poem) {
+		for (Poem p : poemLists) {
+			if (p.getPid() == poem.getPid()) {
+				return true;
+			}
+		}
+		return false;
+	}
 }

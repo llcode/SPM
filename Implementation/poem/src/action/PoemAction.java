@@ -1,23 +1,25 @@
 package action;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
+
+import com.opensymphony.xwork2.ActionContext;
 
 import dao.AuthorDao;
+import dao.MyNewPoemDao;
 import dao.PoemDao;
 import domain.Author;
-import domain.Favorite;
+import domain.MyNewPoem;
 import domain.Poem;
+import domain.UserCount;
 
 public class PoemAction {
 
 	private Poem poem;
 	private PoemDao poemDao;
 	private AuthorDao authorDao;
+	private MyNewPoemDao myNewPoemDao;
+
 	private List<Poem> list;
-	private Map<Integer, String> favoriteList = new HashMap<Integer, String>();
 
 	public void setPoemDao(PoemDao poemDao) {
 		this.poemDao = poemDao;
@@ -25,6 +27,10 @@ public class PoemAction {
 
 	public void setAuthorDao(AuthorDao authorDao) {
 		this.authorDao = authorDao;
+	}
+
+	public void setMyNewPoemDao(MyNewPoemDao myNewPoemDao) {
+		this.myNewPoemDao = myNewPoemDao;
 	}
 
 	public Poem getPoem() {
@@ -43,14 +49,6 @@ public class PoemAction {
 		this.list = list;
 	}
 
-	public Map<Integer, String> getFavoriteList() {
-		return favoriteList;
-	}
-
-	public void setFavoriteList(Map<Integer, String> favoriteList) {
-		this.favoriteList = favoriteList;
-	}
-
 	public String index() {
 		list = poemDao.queryAll();
 		return "index";
@@ -58,10 +56,6 @@ public class PoemAction {
 
 	public String show() {
 		poem = poemDao.findById(poem);
-		Set<Favorite> favorites = poem.getFavoriteLists();
-		for (Favorite favorite : favorites) {
-			favoriteList.put(favorite.getFid(), favorite.getName());
-		}
 		return "show";
 	}
 
@@ -75,6 +69,7 @@ public class PoemAction {
 	public String add() {
 		Author author = authorDao.findByName(poem.getAuthor().getName());
 		if (author == null) {
+			poem.setAuthor(null);
 			return "add";
 		} else {
 			poem.setAuthor(author);
@@ -93,6 +88,20 @@ public class PoemAction {
 	public String delete() {
 		poemDao.deletePoem(poem);
 		return index();
+	}
+
+	public String addToNewPoem() {
+		MyNewPoem newPoem = new MyNewPoem();
+		UserCount user = (UserCount) ActionContext.getContext().getSession()
+				.get("userInSession");
+		poem = poemDao.findById(poem);
+		newPoem.setUser(user);
+		newPoem.setPoem(poem);
+
+		// TODO: Check whether the poem is already in new poem list.
+		// Maybe we can do that by adding a method in user domain.
+		myNewPoemDao.save(newPoem);
+		return show();
 	}
 
 }

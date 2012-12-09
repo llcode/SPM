@@ -15,12 +15,12 @@
 			<result name="add">favoriteAdd.jsp</result>
 			<result name="edit">favoriteUpdate.jsp</result>
 			<result name="show">favoriteShow.jsp</result>
+			<result name="addPoem">poemAddToFavorite.jsp</result>
 		</action>
 		<action name="myNewPoemService" class="myNewPoemAction">
-			<result name="index">index.jsp</result>
-			<result name="goTest">goTest.jsp</result>
-			<result name="goResult">goResult.jsp</result>
-			<result name="addMyNewPoem">add.jsp</result>
+			<result name="index">npList.jsp</result>
+			<result name="goTest">npTest.jsp</result>
+			<result name="goResult">npResult.jsp</result>
 		</action>
 		
 		<action name="poemService" class="poemAction">
@@ -31,13 +31,12 @@
 		</action>
 		
 		<action name="userCountService" class="userCountAction">
-			<result name="index">index.jsp</result>
-			<result name="error">/login.jsp</result>
-			<result name="registsuccess">login.jsp</result>
-			<result name="gologin">login.jsp</result>
-			<result name="regist" type="redirect">regist.jsp</result>
-			<result name="queryById">showInformation.jsp</result>
-			<result name="goMain">main.jsp</result>
+			<result name="error">userLogin.jsp</result>
+			<result name="registsuccess">userLogin.jsp</result>
+			<result name="gologin">userLogin.jsp</result>
+			<result name="regist" type="redirect">userRegister.jsp</result>
+			<result name="queryById">userInformation.jsp</result>
+			<result name="goMain">userMain.jsp</result>
 		</action>
 		
 	</package>

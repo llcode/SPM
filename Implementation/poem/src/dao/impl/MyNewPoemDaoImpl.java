@@ -1,5 +1,6 @@
 package dao.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Criteria;
@@ -16,10 +17,13 @@ public class MyNewPoemDaoImpl extends BaseDaoImpl implements MyNewPoemDao {
 
 	@Override
 	public void save(MyNewPoem myNewPoem) {
+		myNewPoem.setCount(0);
+		myNewPoem.setCreatedate(new Date(System.currentTimeMillis()));
 		template.save(myNewPoem);
 	}
 
 	@Override
+	@SuppressWarnings("unchecked")
 	public List<MyNewPoem> queryAll(UserCount user) {
 		Session session = sessionFactory.openSession();
 		Criteria criteria = session.createCriteria(MyNewPoem.class);
@@ -27,7 +31,6 @@ public class MyNewPoemDaoImpl extends BaseDaoImpl implements MyNewPoemDao {
 		criteria.addOrder(Order.asc("newpid"));
 
 		// lazy load poem information
-		@SuppressWarnings("unchecked")
 		List<MyNewPoem> list = criteria.list();
 		for (MyNewPoem myNewPoem : list) {
 			Hibernate.initialize(myNewPoem.getPoem());

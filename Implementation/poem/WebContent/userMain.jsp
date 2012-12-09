@@ -5,18 +5,21 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Insert title here</title>
+<title>我的主页</title>
 </head>
 <body>
-成功登陆<br>
-<a
-	href="userCountService!queryById?usercount.userid=${userInSession.userid}">${userInSession.name}</a>
-
-<a href="userCountService!loginout">login out</a><br>
+成功登陆
+<br>
+<s:include value="top.jsp"></s:include>
 
 <s:iterator value="favoriteList">
-	<s:property value="fid"/><br>
-	<s:property value="name"/><br>
+	<a href="favoriteService!show?favorite.fid=<s:property value="fid" />">
+	<s:property value="name" /></a>
+	<a href="favoriteService!edit?favorite.fid=<s:property value="fid" />">
+	编辑</a>
+	<a
+		href="favoriteService!delete?favorite.fid=<s:property value="fid" />">
+	删除</a><br>
 </s:iterator>
 <a href="favoriteAdd.jsp">添加更多列表</a>
 </body>

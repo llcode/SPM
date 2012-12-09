@@ -8,15 +8,19 @@
 <title>收藏列表</title>
 </head>
 <body>
+<s:include value="top.jsp"></s:include>
 <h1>我的收藏列表</h1>
-<a href="favoriteAdd.jsp">添加列表</a><br>
+<a href="favoriteAdd.jsp">添加列表</a>
+<br>
 <s:iterator value="list">
 	<a href="favoriteService!show?favorite.fid=<s:property value="fid" />">
 	<s:property value="name" /></a>
 	<a href="favoriteService!edit?favorite.fid=<s:property value="fid" />">
 	编辑</a>
-	<a href="favoriteService!delete?favorite.fid=<s:property value="fid" />">
-	删除</a><br>
+	<a
+		href="favoriteService!delete?favorite.fid=<s:property value="fid" />">
+	删除</a>
+	<br>
 </s:iterator>
 </body>
 </html>

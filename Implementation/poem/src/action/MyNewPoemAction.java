@@ -103,16 +103,27 @@ public class MyNewPoemAction {
 		return splitPoem;
 	}
 
+	// Will not be used later. Moved to poem action.
 	public String addMyNewPoem() {
 		MyNewPoem newPoem = new MyNewPoem();
-		UserCount user = (UserCount) ActionContext.getContext().getSession().get("userInSession");
-		System.out.println("user in session is : " + user.getName());
+		UserCount user = (UserCount) ActionContext.getContext().getSession()
+				.get("userInSession");
 		newPoem.setUser(user);
 		newPoem.setPoem(poem);
-		newPoem.setCount(0);
-		newPoem.setCreatedate(new Date(System.currentTimeMillis()));
 		myNewPoemDao.save(newPoem);
 		return "index";
+	}
+
+	public String index() {
+		UserCount user = (UserCount) ActionContext.getContext().getSession()
+				.get("userInSession");
+		myNewPoems = myNewPoemDao.queryAll(user);
+		return "index";
+	}
+
+	// TODO: We also need to add a remove poem method.
+	public String removePoem() {
+		return index();
 	}
 
 	public String goTest() {
@@ -149,16 +160,18 @@ public class MyNewPoemAction {
 
 	private List<MyNewPoem> TestPoems() {
 		List<MyNewPoem> testPoems = new ArrayList<MyNewPoem>();
-
-		// TODO: get user from session.
-		UserCount user = (UserCount) ActionContext.getContext().getSession().get("userInSession");
+		UserCount user = (UserCount) ActionContext.getContext().getSession()
+				.get("userInSession");
 		List<MyNewPoem> allNewPoems = myNewPoemDao.queryAll(user);
 		for (MyNewPoem myNewPoem : allNewPoems) {
-			Date createday = myNewPoem.getCreatedate();
+			// Date createday = myNewPoem.getCreatedate();
 			Date testday = myNewPoem.getTestdate();
 			Date today = new Date(System.currentTimeMillis());
-			if ((today.getTime() - createday.getTime()) / (24 * 60 * 60 * 1000) >= 1
-					&& testday == null) {
+
+			// The following is simplified.
+			// (today.getTime() - createday.getTime()) / (24 * 60 * 60 * 1000)
+			// >= 1 &&
+			if (testday == null) {
 				testPoems.add(myNewPoem);
 			} else {
 				Long distance = ((today.getTime() - testday.getTime()) / (24 * 60 * 60 * 1000));

@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<s:include value="top.jsp"></s:include>
 <h1>测试开始啦</h1>
 <s:form action="myNewPoemService!goResult">
 	<s:iterator value="myNewPoems" status="npoemid">

@@ -2,6 +2,8 @@ package dao;
 
 import java.util.List;
 
+import domain.Favorite;
+import domain.MyNewPoem;
 import domain.Poem;
 
 public interface PoemDao {
@@ -15,5 +17,9 @@ public interface PoemDao {
 	public List<Poem> queryAll();
 	
 	public void update(Poem poem);
+	
+	public void addToFavorites(List<Favorite> favorites, Poem poem);
+	
+	public void addToNewPoems(MyNewPoem myNewPoem);
 	
 }

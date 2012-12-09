@@ -8,8 +8,9 @@
 <title>诗词列表</title>
 </head>
 <body>
-<h1>诗词列表</h1>
+<s:include value="top.jsp"></s:include>
 
+<h1>诗词列表</h1>
 <s:iterator value="list">
 	<a href="poemService!show?poem.pid=<s:property value="pid" />"><s:property
 		value="title" /></a>

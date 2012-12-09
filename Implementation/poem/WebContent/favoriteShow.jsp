@@ -8,9 +8,11 @@
 <title>收藏列表内容</title>
 </head>
 <body>
+<s:include value="top.jsp"></s:include>
 <h4><s:property value="favorite.name" /> 里的内容：</h4>
 <s:iterator value="poemList">
-	<s:property value="title" />
+	<a href="poemService!show?poem.pid=<s:property value="pid" />"><s:property
+		value="title" /></a>
 	<br>
 	<s:property value="author.name" />
 	<br>

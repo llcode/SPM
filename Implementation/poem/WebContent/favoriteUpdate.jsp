@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<s:include value="top.jsp"></s:include>
 <h1>编辑收藏列表</h1>
 <s:form action="favoriteService!update">
 	<s:hidden name="favorite.fid"></s:hidden>

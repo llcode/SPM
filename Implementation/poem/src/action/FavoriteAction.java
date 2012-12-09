@@ -6,6 +6,7 @@ import java.util.List;
 import com.opensymphony.xwork2.ActionContext;
 
 import dao.FavoriteDao;
+import dao.PoemDao;
 import domain.Favorite;
 import domain.Poem;
 import domain.UserCount;
@@ -13,12 +14,14 @@ import domain.UserCount;
 public class FavoriteAction {
 
 	private FavoriteDao favoriteDao;
+	private PoemDao poemDao;
 
 	private Favorite favorite;
 	private Poem poem;
 
 	private List<Favorite> list;
 	private List<Poem> poemList;
+	private List<String> chklist;
 
 	public Favorite getFavorite() {
 		return favorite;
@@ -52,8 +55,20 @@ public class FavoriteAction {
 		this.poemList = poemList;
 	}
 
+	public List<String> getChklist() {
+		return chklist;
+	}
+
+	public void setChklist(List<String> chklist) {
+		this.chklist = chklist;
+	}
+
 	public void setFavoriteDao(FavoriteDao favoriteDao) {
 		this.favoriteDao = favoriteDao;
+	}
+
+	public void setPoemDao(PoemDao poemDao) {
+		this.poemDao = poemDao;
 	}
 
 	public String index() {
@@ -99,11 +114,28 @@ public class FavoriteAction {
 		return index();
 	}
 
-	public String addPoem() {
-		favoriteDao.addPoem(favorite, poem);
-		return "index";
+	public String goAddPoem() {
+		UserCount user = (UserCount) ActionContext.getContext().getSession()
+				.get("userInSession");
+		list = favoriteDao.queryAll(user);
+		poem = poemDao.findById(poem);
+		return "addPoem";
 	}
-	
+
+	public String addPoem() {
+		poem = poemDao.findById(poem);
+		List<Favorite> fl = new ArrayList<Favorite>();
+		for (String s : chklist) {
+			if (!s.equals("false")) {
+				Favorite f = new Favorite();
+				f.setFid(Integer.parseInt(s));
+				fl.add(f);
+			}
+		}
+		poemDao.addToFavorites(fl, poem);
+		return index();
+	}
+
 	public String removePoem() {
 		favoriteDao.removePoem(favorite, poem);
 		return show();

@@ -25,6 +25,7 @@ public class FavoriteDaoImpl extends BaseDaoImpl implements FavoriteDao {
 		Session session = sessionFactory.openSession();
 		favorite = (Favorite) session.get(Favorite.class, favorite.getFid());
 		Hibernate.initialize(favorite.getPoemLists());
+		session.close();
 		return favorite;
 	}
 

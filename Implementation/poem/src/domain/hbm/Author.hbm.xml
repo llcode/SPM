@@ -11,10 +11,10 @@
 		</id>
 		<property name="name"></property>
 		<property name="description"></property>
-		
+
 		<set name="poems">
 			<!-- column:在当前类所关联的另一方对应的表的外键名 -->
-			<key column="pid"></key>
+			<key column="aid"></key>
 			<one-to-many class="Poem" />
 		</set>
 	</class>

@@ -5,19 +5,19 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>测试结果</title>
 </head>
 <body>
 <s:include value="top.jsp"></s:include>
-Your score is
+你的分数是：
 <s:property value="%{result*100}" />
 <br>
 
 <table>
 	<tr>
-		<th>No</th>
-		<th>Yours wrong answer</th>
-		<th>The right answer</th>
+		<th>编号</th>
+		<th>错误诗句</th>
+		<th>正确诗句</th>
 
 	</tr>
 	<s:iterator value="wrongItems" status="st">

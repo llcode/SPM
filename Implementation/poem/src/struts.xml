@@ -5,11 +5,14 @@
 <struts>
 	<package name="default" namespace="/" extends="struts-default">
 		<!-- 当把action的生命周期交给Spring托管以后，class应该填写该action在Spring配置文件中所对应的actionBean的id -->
-		
+
 		<action name="authorService" class="authorAction">
-			<result name="index">index.jsp</result>
+			<result name="index">authorList.jsp</result>
+			<result name="add">authorAdd.jsp</result>
+			<result name="edit">authorUpdate.jsp</result>
+			<result name="show">authorShow.jsp</result>
 		</action>
-		
+
 		<action name="favoriteService" class="favoriteAction">
 			<result name="index">favoriteList.jsp</result>
 			<result name="add">favoriteAdd.jsp</result>
@@ -22,14 +25,14 @@
 			<result name="goTest">npTest.jsp</result>
 			<result name="goResult">npResult.jsp</result>
 		</action>
-		
+
 		<action name="poemService" class="poemAction">
 			<result name="index">poemList.jsp</result>
 			<result name="add">poemAdd.jsp</result>
 			<result name="edit">poemUpdate.jsp</result>
 			<result name="show">poemShow.jsp</result>
 		</action>
-		
+
 		<action name="userCountService" class="userCountAction">
 			<result name="error">userLogin.jsp</result>
 			<result name="registsuccess">userLogin.jsp</result>
@@ -38,6 +41,6 @@
 			<result name="queryById">userInformation.jsp</result>
 			<result name="goMain">userMain.jsp</result>
 		</action>
-		
+
 	</package>
 </struts>

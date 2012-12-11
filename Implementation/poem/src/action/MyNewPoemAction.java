@@ -103,17 +103,6 @@ public class MyNewPoemAction {
 		return splitPoem;
 	}
 
-	// Will not be used later. Moved to poem action.
-	public String addMyNewPoem() {
-		MyNewPoem newPoem = new MyNewPoem();
-		UserCount user = (UserCount) ActionContext.getContext().getSession()
-				.get("userInSession");
-		newPoem.setUser(user);
-		newPoem.setPoem(poem);
-		myNewPoemDao.save(newPoem);
-		return "index";
-	}
-
 	public String index() {
 		UserCount user = (UserCount) ActionContext.getContext().getSession()
 				.get("userInSession");
@@ -164,34 +153,33 @@ public class MyNewPoemAction {
 				.get("userInSession");
 		List<MyNewPoem> allNewPoems = myNewPoemDao.queryAll(user);
 		for (MyNewPoem myNewPoem : allNewPoems) {
-			// Date createday = myNewPoem.getCreatedate();
+
+			// testday is used to make sure we do test once a day!
+			Date createday = myNewPoem.getCreatedate();
 			Date testday = myNewPoem.getTestdate();
 			Date today = new Date(System.currentTimeMillis());
 
-			// The following is simplified.
-			// (today.getTime() - createday.getTime()) / (24 * 60 * 60 * 1000)
-			// >= 1 &&
+			Long distance = ((today.getTime() - createday.getTime()) / (24 * 60 * 60 * 1000));
+
+			// If we havn't do test even once, then do it.
+			// If we havn't do test for a long time, then we will do it now.
+			// If we have do it today or shortly before, then we wouldn't do it
+			// again.
 			if (testday == null) {
 				testPoems.add(myNewPoem);
-			} else {
-				Long distance = ((today.getTime() - testday.getTime()) / (24 * 60 * 60 * 1000));
-				if (distance != 0
-						&& distance >= Math.pow(2, myNewPoem.getCount())) {
-					testPoems.add(myNewPoem);
-				}
+			} else if (testday != today && distance > 0
+					&& distance >= Math.pow(2, myNewPoem.getCount())) {
+				testPoems.add(myNewPoem);
 			}
 		}
 		return testPoems;
 	}
 
 	private List<Item> TestItems() {
+		// TODO: User a set to store the right poems!
 		List<MyNewPoem> testPoems = TestPoems();
 		setMyNewPoems(testPoems);
 
-		for (MyNewPoem myNewPoem : testPoems) {
-			System.out.println("author:"
-					+ myNewPoem.getPoem().getAuthor().getName());
-		}
 		List<Item> allTestItems = new ArrayList<Item>();
 
 		for (MyNewPoem myNewPoem : testPoems) {

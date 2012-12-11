@@ -27,6 +27,7 @@ public class PoemDaoImpl extends BaseDaoImpl implements PoemDao {
 		poem = (Poem) session.get(Poem.class, poem.getPid());
 		Hibernate.initialize(poem.getAuthor());
 		Hibernate.initialize(poem.getFavoriteLists());
+		session.close();
 		return poem;
 	}
 

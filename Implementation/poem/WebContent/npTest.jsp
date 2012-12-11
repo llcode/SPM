@@ -10,7 +10,7 @@
 <body>
 <s:include value="top.jsp"></s:include>
 <h1>测试开始啦</h1>
-<s:form action="myNewPoemService!goResult">
+<s:form action="myNewPoemService!goResult" theme="simple">
 	<s:iterator value="myNewPoems" status="npoemid">
 		<s:property value="#npoemid.index+1" />
 		<s:property value="poem.title" />

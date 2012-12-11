@@ -8,9 +8,9 @@
 <title>我的主页</title>
 </head>
 <body>
+<s:include value="top.jsp"></s:include>
 成功登陆
 <br>
-<s:include value="top.jsp"></s:include>
 
 <s:iterator value="favoriteList">
 	<a href="favoriteService!show?favorite.fid=<s:property value="fid" />">
@@ -19,7 +19,8 @@
 	编辑</a>
 	<a
 		href="favoriteService!delete?favorite.fid=<s:property value="fid" />">
-	删除</a><br>
+	删除</a>
+	<br>
 </s:iterator>
 <a href="favoriteAdd.jsp">添加更多列表</a>
 </body>

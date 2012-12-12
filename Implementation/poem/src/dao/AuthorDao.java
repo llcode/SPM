@@ -17,5 +17,7 @@ public interface AuthorDao {
 	public void insertAuthor(Author author);
 
 	public void delete(Author author);
+	
+	public List<Author> queryByName(String name);
 
 }

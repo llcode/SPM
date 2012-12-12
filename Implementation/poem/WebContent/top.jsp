@@ -13,6 +13,8 @@
 <a href="favoriteService!index">我的收藏卡</a>
 <a href="myNewPoemService!index">生诗词库</a>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="search.jsp">搜索</a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <a
 	href="userCountService!queryById?usercount.userid=${userInSession.userid}">${userInSession.name}</a>
 

@@ -107,11 +107,12 @@ public class Poem {
 	}
 
 	// generate the blanks from a poem.
-	public List<Integer> geneRand() {
+	public List<Integer> geneRand(double percent) {
 		Random rand = new Random();
 		int length = getSentences().size();
 		List<Integer> res = new ArrayList<Integer>();
-		while (res.size() < length / 2) {
+		int blanks = (int) (length * percent);
+		while (res.size() < blanks) {
 			Integer i = rand.nextInt(length);
 			if (!res.contains(i))
 				res.add(i);

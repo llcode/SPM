@@ -9,6 +9,8 @@ import org.hibernate.Criteria;
 import org.hibernate.Hibernate;
 import org.hibernate.Transaction;
 import org.hibernate.classic.Session;
+import org.hibernate.criterion.Restrictions;
+
 import dao.PoemDao;
 import domain.Favorite;
 import domain.MyNewPoem;
@@ -72,6 +74,34 @@ public class PoemDaoImpl extends BaseDaoImpl implements PoemDao {
 		myNewPoem.setCount(0);
 		myNewPoem.setCreatedate(new Date(System.currentTimeMillis()));
 		template.save(myNewPoem);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Poem> queryByTitle(String title) {
+		Session session = sessionFactory.openSession();
+		Criteria criteria = session.createCriteria(Poem.class);
+		criteria.add(Restrictions.like("title", "%" + title + "%"));
+		List<Poem> list = criteria.list();
+		for (Poem poem : list) {
+			Hibernate.initialize(poem.getAuthor());
+		}
+		session.close();
+		return list;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Poem> queryByContent(String content) {
+		Session session = sessionFactory.openSession();
+		Criteria criteria = session.createCriteria(Poem.class);
+		criteria.add(Restrictions.like("content", "%" + content + "%"));
+		List<Poem> list = criteria.list();
+		for (Poem poem : list) {
+			Hibernate.initialize(poem.getAuthor());
+		}
+		session.close();
+		return list;
 	}
 
 }

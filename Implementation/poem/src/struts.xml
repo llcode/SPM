@@ -31,6 +31,7 @@
 			<result name="add">poemAdd.jsp</result>
 			<result name="edit">poemUpdate.jsp</result>
 			<result name="show">poemShow.jsp</result>
+			<result name="search">search.jsp</result>
 		</action>
 
 		<action name="userCountService" class="userCountAction">

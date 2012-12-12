@@ -22,6 +22,9 @@
 		href="myNewPoemService!removePoem?myNewPoem.newpid=<s:property value="newpid"/>">从生诗词表删除</a>
 	<br><hr>
 </s:iterator>
-<a href="myNewPoemService!goTest">开始测试吧</a>
+开始测试吧
+<a href="myNewPoemService!goTest?mode=easy">简单</a>
+<a href="myNewPoemService!goTest?mode=normal">中等</a>
+<a href="myNewPoemService!goTest?mode=hard">困难</a>
 </body>
 </html>

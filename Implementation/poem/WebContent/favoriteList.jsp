@@ -14,7 +14,7 @@
 <br>
 <s:iterator value="list">
 	<a href="favoriteService!show?favorite.fid=<s:property value="fid" />">
-	<s:property value="name" /></a>
+	<s:property value="name" /></a>（共<s:property value="%{poemLists.size()}"/>首）
 	<a href="favoriteService!edit?favorite.fid=<s:property value="fid" />">
 	编辑</a>
 	<a

@@ -58,4 +58,13 @@ public class AuthorDaoImpl extends BaseDaoImpl implements AuthorDao {
 		template.delete(author);
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Author> queryByName(String name) {
+		DetachedCriteria criteria = DetachedCriteria.forClass(Author.class);
+		criteria.add(Restrictions.like("name", "%" + name + "%"));
+		List<Author> list = template.findByCriteria(criteria);
+		return list;
+	}
+
 }

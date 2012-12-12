@@ -15,11 +15,14 @@ import domain.UserCount;
 public class PoemAction {
 
 	private Poem poem;
+	private String condition;
+	private String query;
 	private PoemDao poemDao;
 	private AuthorDao authorDao;
 	private MyNewPoemDao myNewPoemDao;
 
 	private List<Poem> list;
+	private List<Author> authorList;
 
 	public void setPoemDao(PoemDao poemDao) {
 		this.poemDao = poemDao;
@@ -31,6 +34,22 @@ public class PoemAction {
 
 	public void setMyNewPoemDao(MyNewPoemDao myNewPoemDao) {
 		this.myNewPoemDao = myNewPoemDao;
+	}
+
+	public String getCondition() {
+		return condition;
+	}
+
+	public void setCondition(String condition) {
+		this.condition = condition;
+	}
+
+	public String getQuery() {
+		return query;
+	}
+
+	public void setQuery(String query) {
+		this.query = query;
 	}
 
 	public Poem getPoem() {
@@ -47,6 +66,14 @@ public class PoemAction {
 
 	public void setList(List<Poem> list) {
 		this.list = list;
+	}
+
+	public List<Author> getAuthorList() {
+		return authorList;
+	}
+
+	public void setAuthorList(List<Author> authorList) {
+		this.authorList = authorList;
 	}
 
 	public String index() {
@@ -102,6 +129,17 @@ public class PoemAction {
 		// Maybe we can do that by adding a method in user domain.
 		myNewPoemDao.save(newPoem);
 		return show();
+	}
+
+	public String search() {
+		if (condition.equalsIgnoreCase("诗人")) {
+			authorList = authorDao.queryByName(query);
+		} else if (condition.equalsIgnoreCase("标题")) {
+			list = poemDao.queryByTitle(query);
+		} else if (condition.equalsIgnoreCase("内容")) {
+			list = poemDao.queryByContent(query);
+		}
+		return "search";
 	}
 
 }

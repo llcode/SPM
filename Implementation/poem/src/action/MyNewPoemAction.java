@@ -16,6 +16,7 @@ import domain.UserCount;
 public class MyNewPoemAction {
 
 	private Double result;
+	private String mode;
 	private MyNewPoemDao myNewPoemDao;
 	private Poem poem;
 	private MyNewPoem myNewPoem;
@@ -43,6 +44,14 @@ public class MyNewPoemAction {
 
 	public void setPoem(Poem poem) {
 		this.poem = poem;
+	}
+
+	public String getMode() {
+		return mode;
+	}
+
+	public void setMode(String mode) {
+		this.mode = mode;
 	}
 
 	public MyNewPoem getMyNewPoem() {
@@ -116,13 +125,13 @@ public class MyNewPoemAction {
 	}
 
 	public String goTest() {
-		setAllItems(TestItems());
+		setAllItems(TestItems(getPercent()));
 		return "goTest";
 	}
 
 	public String goResult() {
 		double correct = 0.0, total = 0.0;
-		setAllItems(TestItems());
+		setAllItems(TestItems(getPercent()));
 		for (Item item : testItems) {
 			// Item not null is not enough.
 			try {
@@ -175,7 +184,7 @@ public class MyNewPoemAction {
 		return testPoems;
 	}
 
-	private List<Item> TestItems() {
+	private List<Item> TestItems(double percent) {
 		// TODO: User a set to store the right poems!
 		List<MyNewPoem> testPoems = TestPoems();
 		setMyNewPoems(testPoems);
@@ -185,7 +194,7 @@ public class MyNewPoemAction {
 		for (MyNewPoem myNewPoem : testPoems) {
 			Poem poem = myNewPoem.getPoem();
 			List<String> sentences = poem.getSentences();
-			List<Integer> blanks = poem.geneRand();
+			List<Integer> blanks = poem.geneRand(percent);
 			String puncs = poem.getPuncs();
 
 			for (int i = 0; i < sentences.size(); i++) {
@@ -216,6 +225,17 @@ public class MyNewPoemAction {
 				return item;
 		}
 		return null;
+	}
+
+	// Set the percent of blanks by mode.
+	private double getPercent() {
+		if (mode.equalsIgnoreCase("easy")) {
+			return 0.25;
+		} else if (mode.equalsIgnoreCase("hard")) {
+			return 0.75;
+		} else {
+			return 0.5;
+		}
 	}
 
 }

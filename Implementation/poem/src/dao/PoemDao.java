@@ -22,4 +22,8 @@ public interface PoemDao {
 	
 	public void addToNewPoems(MyNewPoem myNewPoem);
 	
+	public List<Poem> queryByTitle(String title);
+	
+	public List<Poem> queryByContent(String content);
+	
 }

@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>测试开始啦</title>
 </head>
 <body>
 <s:include value="top.jsp"></s:include>

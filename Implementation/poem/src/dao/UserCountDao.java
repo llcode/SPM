@@ -15,5 +15,7 @@ public interface UserCountDao {
 	public UserCount checkUserEmail(UserCount usercount);
 
 	public void updateUserCount(UserCount usercount);
+	
+	public void delete(UserCount usercount);
 
 }

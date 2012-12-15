@@ -9,12 +9,14 @@
 </head>
 <body>
 <s:include value="top.jsp"></s:include>
-<h4>搜索</h4>
-<s:form action="poemService!search">
-	<s:select label="请选择查询条件：" name="condition" list="{'标题','诗人','内容'}"
-		headerKey="-1" headerValue="--- Please Select ---" required="true"
-		theme="simple"></s:select>
-	<s:textfield name="query" required="true" theme="simple"></s:textfield>
+搜索
+<s:form action="poemService!search" theme="simple"
+	cssStyle="display:inline;">
+	<s:select cssStyle="display:inline;" name="condition"
+		list="{'标题','诗人','内容'}" headerKey="-1" headerValue="-- 请选择查询条件 --"
+		required="true" theme="simple"></s:select>
+	<s:textfield name="query" cssStyle="display:inline;" required="true"
+		theme="simple"></s:textfield>
 	<s:submit value="搜索"></s:submit>
 </s:form>
 
@@ -33,7 +35,8 @@
 		<a href="poemService!show?poem.pid=<s:property value="pid" />"><s:property
 			value="title" /></a>
 		<br>
-		<a href="authorService!show?author.aid=<s:property value="author.aid" />">
+		<a
+			href="authorService!show?author.aid=<s:property value="author.aid" />">
 		<s:property value="author.name" /></a>
 		<br>
 		<s:property value="content" />

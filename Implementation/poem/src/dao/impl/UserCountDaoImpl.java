@@ -28,7 +28,6 @@ public class UserCountDaoImpl extends BaseDaoImpl implements UserCountDao {
 
 		List<UserCount> list = template.findByCriteria(criteria);
 		return list.size() == 0 ? null : list.get(0);
-		// return null;
 	}
 
 	@Override
@@ -39,7 +38,6 @@ public class UserCountDaoImpl extends BaseDaoImpl implements UserCountDao {
 		criteria.add(Restrictions.eq("name", usercount.getName()));
 		List<UserCount> list = template.findByCriteria(criteria);
 		return list.size() == 0 ? null : list.get(0);
-
 	}
 
 	@Override
@@ -64,7 +62,12 @@ public class UserCountDaoImpl extends BaseDaoImpl implements UserCountDao {
 
 	@Override
 	public void updateUserCount(UserCount usercount) {
-		template.saveOrUpdate(usercount);
+		template.update(usercount);
+	}
+
+	@Override
+	public void delete(UserCount usercount) {
+		template.delete(usercount);
 	}
 
 }

@@ -19,9 +19,6 @@ public class UserCountDaoImplTest {
 
 	private UserCountDao userCountDao;
 
-	// TODO: create a seeddata.sql to populate the test data. All the test
-	// should use and only use the date in the seeddata.sql file.
-
 	@Before
 	public void setUp() throws Exception {
 		ApplicationContext ctx = new FileSystemXmlApplicationContext(
@@ -30,15 +27,19 @@ public class UserCountDaoImplTest {
 	}
 
 	@Test
-	public void findById() {
-		UserCount user = userCountDao.findById(200);
+	public void testFindById() {
+		UserCount user = userCountDao.findById(301);
 		log.info("user name find by dao : " + user.getName());
 		Assert.assertNotNull(user);
 		Assert.assertEquals("keke", user.getName());
+
+		log.info("find a non existing id : 3000");
+		user = userCountDao.findById(3000);
+		Assert.assertNull(user);
 	}
 
 	@Test
-	public void checkLogin() {
+	public void testCheckLogin() {
 		UserCount user1 = new UserCount();
 		user1.setName("keke");
 		user1.setPassword("123456");
@@ -51,53 +52,53 @@ public class UserCountDaoImplTest {
 	}
 
 	@Test
-	public void checkNonExistingUserLogin() {
+	public void testCheckNonExistingUserLogin() {
 		UserCount user1 = new UserCount();
 		user1.setName("iamNotExist");
 		user1.setPassword("123456");
-		log.info("non existing user with name iamNotExisting, password 123456");
+		log.info("non existing user login with name iamNotExisting, password 123456");
 		UserCount user2 = userCountDao.checkLogin(user1);
 		Assert.assertNull(user2);
 	}
 
 	@Test
-	public void checkUserName() {
+	public void testCheckUserName() {
 		UserCount user1 = new UserCount();
 		user1.setName("keke");
-		log.info("an existing user with name " + user1.getName());
+		log.info("an existing user check with name " + user1.getName());
 		UserCount user2 = userCountDao.checkUserName(user1);
 		Assert.assertNotNull(user2);
 	}
 
 	@Test
-	public void checkNonExistingUserName() {
+	public void testCheckNonExistingUserName() {
 		UserCount user1 = new UserCount();
 		user1.setName("iamNotExist");
-		log.info("non existing user with name " + user1.getName());
+		log.info("non existing user check with name " + user1.getName());
 		UserCount user2 = userCountDao.checkUserName(user1);
 		Assert.assertNull(user2);
 	}
 
 	@Test
-	public void checkUserEmail() {
+	public void testCheckUserEmail() {
 		UserCount user1 = new UserCount();
-		user1.setEmail("keke@keke.com");
-		log.info("an existing user with email " + user1.getEmail());
+		user1.setEmail("keke@poem.com");
+		log.info("an existing user check with email " + user1.getEmail());
 		UserCount user2 = userCountDao.checkUserEmail(user1);
 		Assert.assertNotNull(user2);
 	}
 
 	@Test
-	public void checkNonExistingEmail() {
+	public void testCheckNonExistingEmail() {
 		UserCount user1 = new UserCount();
 		user1.setEmail("iamNotExist@notexisting.com");
-		log.info("non existing user with email " + user1.getEmail());
+		log.info("non existing user check with email " + user1.getEmail());
 		UserCount user2 = userCountDao.checkUserEmail(user1);
 		Assert.assertNull(user2);
 	}
 
 	@Test
-	public void registAndDelete() {
+	public void testRegistAndDelete() {
 		UserCount user = new UserCount();
 		user.setName("anewname");
 		user.setPassword("123456");
@@ -119,14 +120,14 @@ public class UserCountDaoImplTest {
 	}
 
 	@Test
-	public void updateUserCount() {
-		UserCount user = userCountDao.findById(200);
+	public void testUpdateUserCount() {
+		UserCount user = userCountDao.findById(301);
 		Assert.assertEquals("keke", user.getName());
 		log.info("before we update, user name is: " + user.getName());
 		user.setName("kerie");
 		userCountDao.updateUserCount(user);
 
-		user = userCountDao.findById(200);
+		user = userCountDao.findById(301);
 		log.info("after we update, user name is: " + user.getName());
 		Assert.assertEquals("kerie", user.getName());
 

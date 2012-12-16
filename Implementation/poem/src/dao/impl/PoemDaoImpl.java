@@ -27,16 +27,19 @@ public class PoemDaoImpl extends BaseDaoImpl implements PoemDao {
 	public Poem findById(Poem poem) {
 		Session session = sessionFactory.openSession();
 		poem = (Poem) session.get(Poem.class, poem.getPid());
-		Hibernate.initialize(poem.getAuthor());
-		Hibernate.initialize(poem.getFavoriteLists());
-		session.close();
-		return poem;
+		if (poem != null) {
+			Hibernate.initialize(poem.getAuthor());
+			Hibernate.initialize(poem.getFavoriteLists());
+			session.close();
+			return poem;
+		} else {
+			return null;
+		}
 	}
 
 	@Override
 	public void deletePoem(Poem poem) {
 		template.delete(poem);
-
 	}
 
 	@Override

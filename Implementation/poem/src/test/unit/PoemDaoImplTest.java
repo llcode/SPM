@@ -37,7 +37,7 @@ public class PoemDaoImplTest {
 		poem = poemDao.findById(poem);
 		log.info("poem find by id title is : " + poem.getTitle());
 		Assert.assertNotNull(poem);
-		Assert.assertEquals("Óæ¼Ò°Á¡¤ÈûÏÂÇïÀ´·ç¾°Òì", poem.getTitle());
+		Assert.assertEquals("ï¿½ï¿½ï¿½Ò°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ç¾°ï¿½ï¿½", poem.getTitle());
 
 		poem.setPid(3000);
 		log.info("find a non existing id : 3000");
@@ -63,6 +63,7 @@ public class PoemDaoImplTest {
 		list = poemDao.queryAll();
 		for (Poem poem : list) {
 			ids.add(poem.getPid());
+			log.info("poem title in all poems list: " + poem.getTitle());
 		}
 		Assert.assertNotNull(list);
 		for (int i = 0; i < 6; i++) {

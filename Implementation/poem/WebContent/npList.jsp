@@ -9,6 +9,10 @@
 </head>
 <body>
 <s:include value="top.jsp"></s:include>
+<div id="Wrapper">
+<div id="Main">
+<div class="sep20"></div>
+<div class="box">
 <h1>生诗词列表</h1>
 <s:iterator value="myNewPoems">
 	<a href="poemService!show?poem.pid=<s:property value="poem.pid" />"><s:property
@@ -28,5 +32,8 @@
 <a href="myNewPoemService!goTest?mode=easy">简单</a>
 <a href="myNewPoemService!goTest?mode=normal">中等</a>
 <a href="myNewPoemService!goTest?mode=hard">困难</a>
+</div>
+</div>
+</div>
 </body>
 </html>

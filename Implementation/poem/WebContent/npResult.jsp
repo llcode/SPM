@@ -9,6 +9,10 @@
 </head>
 <body>
 <s:include value="top.jsp"></s:include>
+<div id="Wrapper">
+<div id="Main">
+<div class="sep20"></div>
+<div class="box">
 你的分数是：
 <s:property value="%{result*100}" />
 <br>
@@ -32,5 +36,8 @@
 		</s:else>
 	</s:iterator>
 </table>
+</div>
+</div>
+</div>
 </body>
 </html>

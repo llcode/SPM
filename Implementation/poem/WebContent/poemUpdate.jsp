@@ -10,37 +10,60 @@
 	var goBack = function() {
 		//window.history.go(-1);
 		window.location.href = "poemService!index";
-	}
+	};
 </script>
 </head>
-<body style="background-color: Khaki">
+<body>
 <s:include value="top.jsp"></s:include>
-<h1>欢迎更新信息 ${userInSession.name }</h1>
-<hr>
-<s:form action="poemService!update">
+<div id="Wrapper">
+<div id="Main">
+<div class="sep20"></div>
+<div class="box">
+<div class="cell">
+<div class="fr" style="margin: 16px 10px 0px 0px;"><a
+	href="poemService!index">返回列表</a></div>
+<h1>更新信息</h1>
+</div>
+<div class="inner">
+<s:form action="poemService!update" theme="simple">
 	<!-- 将原有的数据回显在页面上 -->
+	<table cellpadding="5" cellspacing="0" border="0" width="100%">
+	<tr>
 	<s:hidden name="poem.pid"></s:hidden>
-						题目<br>
-	<s:textfield name="poem.title" readonly="true" theme="simple"></s:textfield>
-	<br>
-						作者<br>
-	<s:textfield name="poem.author.name" readonly="true" theme="simple"></s:textfield>
-	<br>
-						诗文<br>
-	<s:textarea name="poem.content" theme="simple" />
-	<br>
-						翻译<br>
-	<s:textarea name="poem.translation" theme="simple" />
-	<br>
-						解释<br>
-	<s:textarea name="poem.explanation" theme="simple" />
-	<br>
-						鉴赏<br>
-	<s:textarea name="poem.appreciation" theme="simple" />
-	<br>
-	<s:submit value="更新" theme="simple"></s:submit>
-	<s:reset value="重置" theme="simple"></s:reset>
+	</tr>
+	<tr>
+		<td width="120" align="right">题目</td>
+		<td width="auto" align="left"><s:textfield name="poem.title" readonly="true" theme="simple" cssClass="sl"/></td>
+	</tr>
+	<tr>
+		<td width="120" align="right">作者</td>
+		<td width="auto" align="left"><s:textfield name="poem.author.name" readonly="true" theme="simple" cssClass="sl"/></td>
+	</tr>
+	<tr>
+		<td width="120" align="right">内容</td>
+		<td width="auto" align="left"><s:textarea name="poem.content" theme="simple" cssClass="ml"/></td>
+	</tr>
+	<tr>
+		<td width="120" align="right">译文</td>
+		<td width="auto" align="left"><s:textarea name="poem.translation" theme="simple" cssClass="ml"/></td>
+	</tr>
+	<tr>
+		<td width="120" align="right">解释</td>
+		<td width="auto" align="left"><s:textarea name="poem.explanation" theme="simple" cssClass="ml"/></td>
+	</tr>
+	<tr>
+		<td width="120" align="right">赏析</td>
+		<td width="auto" align="left"><s:textarea name="poem.appreciation" theme="simple" cssClass="ml"/></td>
+	</tr>
+	<tr>
+		<td width="120" align="right"><s:submit value="更新" theme="simple" cssClass="super normal button"></s:submit></td>
+		<td width="auto" align="left"><s:reset value="重置" theme="simple" cssClass="super normal button"></s:reset></td>
+	</tr>
+	</table>
 </s:form>
-<input type="button" value="返回主页" onclick="goBack()">
+</div>
+</div>
+</div>
+</div>
 </body>
 </html>

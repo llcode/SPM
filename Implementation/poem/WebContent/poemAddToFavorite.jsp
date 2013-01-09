@@ -9,6 +9,10 @@
 </head>
 <body>
 <s:include value="top.jsp"></s:include>
+<div id="Wrapper">
+<div id="Main">
+<div class="sep20"></div>
+<div class="box">
 <h4>添加诗歌到收藏</h4>
 添加
 <a href="poemService!show?poem.pid=<s:property value="poem.pid" />"><s:property
@@ -22,5 +26,8 @@
 	</s:iterator>
 	<s:submit></s:submit>
 </s:form>
+</div>
+</div>
+</div>
 </body>
 </html>

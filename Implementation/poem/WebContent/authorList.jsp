@@ -9,14 +9,23 @@
 </head>
 <body>
 <s:include value="top.jsp"></s:include>
+<div id="Wrapper">
+<div id="Main">
+<div class="sep10"></div>
+<div class="box">
+<div class="cell">
+<div class="fr" style="margin: 16px 10px 0px 0px;"><a href="authorAdd.jsp">添加诗人</a></div>
 <h1>所有诗人</h1>
+</div>
 <s:iterator value="authors">
-	<a href="authorService!show?author.aid=<s:property value="aid" />"> <s:property
-		value="name" /></a>
-	<br>
-	<s:property value="description" />
-	<br>
-</s:iterator>
-<a href="authorAdd.jsp">添加诗人</a>
+	<div class="cell"><a
+		href="authorService!show?author.aid=<s:property value="aid" />"> <s:property
+		value="name" /></a> <br>
+	<s:property value="description" /> <br>
+	</div>
+</s:iterator></div>
+
+</div>
+</div>
 </body>
 </html>

@@ -33,11 +33,14 @@
 </script>
 </head>
 <body>
-
+<s:include value="top.jsp"></s:include>
+<div id="Wrapper">
+<div id="Main">
+<div class="sep20"></div>
+<div class="box">
 <s:form action="userCountService!update"
 	onsubmit="return checkSubmit();">
 	<!-- 将原有的数据回显在页面上 -->
-	<s:include value="top.jsp"></s:include>
 	<table border="0">
 		<tbody>
 			<!-- action的属性都是保存在valueStack中 -->
@@ -70,5 +73,8 @@
 		</tbody>
 	</table>
 </s:form>
+</div>
+</div>
+</div>
 </body>
 </html>

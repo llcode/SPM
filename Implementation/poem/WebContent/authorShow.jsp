@@ -9,28 +9,40 @@
 </head>
 <body>
 <s:include value="top.jsp"></s:include>
+<div id="Wrapper">
+<div id="Main">
+<div class="sep10"></div>
+<div class="box">
+<div class="cell">
 <h1>${author.name }的信息</h1>
-姓名:
-<s:property value="author.name" />
-<br>
-简介
-<br>
-<s:property value="author.description" />
-<br>
-<a
+</div>
+<div class="cell">
+<div class="content">
+<p><s:property value="author.description" /></p>
+</div>
+</div>
+<div class="cell"><a
 	href="authorService!edit?author.aid=<s:property value="author.aid" />">更新</a>
 <a
 	href="authorService!delete?author.aid=<s:property value="author.aid" />">删除</a>
 <br>
-诗集
-<br>
+</div>
+</div>
+<div class="sep20"></div>
+<div class="box">
+<div class="cell">
+<h1>${author.name }的诗集</h1>
+</div>
 <s:iterator value="poems">
-	<a href="poemService!show?poem.pid=<s:property value="pid" />"><s:property
-		value="title" /></a>
-	<br>
-	<s:property value="content"></s:property>
-	<br>
-</s:iterator>
-
+	<div class="cell">
+	<div class="content">
+	<p><a href="poemService!show?poem.pid=<s:property value="pid" />"><s:property
+		value="title" /></a></p>
+	<p><s:property value="content"></s:property></p>
+	</div>
+	</div>
+</s:iterator></div>
+</div>
+</div>
 </body>
 </html>

@@ -9,9 +9,12 @@
 </head>
 <body>
 <s:include value="top.jsp"></s:include>
+<div id="Wrapper">
+<div id="Main">
+<div class="sep20"></div>
+<div class="box">
 成功登陆
 <br>
-
 <s:iterator value="favoriteList">
 	<a href="favoriteService!show?favorite.fid=<s:property value="fid" />">
 	<s:property value="name" /></a>
@@ -23,5 +26,8 @@
 	<br>
 </s:iterator>
 <a href="favoriteAdd.jsp">添加更多列表</a>
+</div>
+</div>
+</div>
 </body>
 </html>

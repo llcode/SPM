@@ -9,6 +9,10 @@
 </head>
 <body>
 <s:include value="top.jsp"></s:include>
+<div id="Wrapper">
+<div id="Main">
+<div class="sep20"></div>
+<div class="box">
 <h1>我的收藏列表</h1>
 <a href="favoriteAdd.jsp">添加列表</a>
 <br>
@@ -22,5 +26,8 @@
 	删除</a>
 	<br>
 </s:iterator>
+</div>
+</div>
+</div>
 </body>
 </html>

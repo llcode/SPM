@@ -9,6 +9,10 @@
 </head>
 <body>
 <s:include value="top.jsp"></s:include>
+<div id="Wrapper">
+<div id="Main">
+<div class="sep20"></div>
+<div class="box">
 <h1>测试开始啦</h1>
 <s:form action="myNewPoemService!goResult" theme="simple">
 	<s:hidden name="mode"></s:hidden>
@@ -41,5 +45,8 @@
 	</s:iterator>
 	<s:submit></s:submit>
 </s:form>
+</div>
+</div>
+</div>
 </body>
 </html>

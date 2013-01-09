@@ -9,6 +9,10 @@
 </head>
 <body>
 <s:include value="top.jsp"></s:include>
+<div id="Wrapper">
+<div id="Main">
+<div class="sep20"></div>
+<div class="box">
 搜索
 <s:form action="poemService!search" theme="simple"
 	cssStyle="display:inline;">
@@ -42,5 +46,8 @@
 		<s:property value="content" />
 	</s:iterator>
 </s:else>
+</div>
+</div>
+</div>
 </body>
 </html>

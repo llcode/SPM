@@ -9,6 +9,11 @@
 </head>
 <body>
 <s:include value="top.jsp"></s:include>
+<div id="Wrapper">
+<div id="Main">
+<div class="sep20"></div>
+<div class="box">
+<div class="cell">
 <h1>编辑诗人信息</h1>
 <s:form action="authorService!update">
 	<s:hidden name="author.aid"></s:hidden>
@@ -16,5 +21,9 @@
 	<s:textarea name="author.description"></s:textarea>
 	<s:submit></s:submit>
 </s:form>
+</div>
+</div>
+</div>
+</div>
 </body>
 </html>

@@ -21,6 +21,10 @@
 </head>
 <body>
 <s:include value="top.jsp"></s:include>
+<div id="Wrapper">
+<div id="Main">
+<div class="sep20"></div>
+<div class="box">
 <h4><s:property value="favorite.name" /> 里的内容：</h4>
 <wb:share-button count="n" type="button" url="<%=getURL %>"
 	size="middle" title="我的诗词收藏列表：<s:property value="favorite.name" />。"
@@ -41,5 +45,8 @@
 	<hr>
 </s:iterator>
 <a href="favoriteService!index">所有列表</a>
+</div>
+</div>
+</div>
 </body>
 </html>

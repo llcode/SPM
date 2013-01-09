@@ -40,8 +40,10 @@
 </script>
 </head>
 <body>
-
-
+<div id="Wrapper">
+<div id="Main">
+<div class="sep20"></div>
+<div class="box">
 <h4>请输入登录信息</h4>
 <s:form action="userCountService!regist" theme="simple"
 	onsubmit="return checkSubmit();">
@@ -75,6 +77,8 @@
 	</table>
 
 </s:form>
-
+</div>
+</div>
+</div>
 </body>
 </html>

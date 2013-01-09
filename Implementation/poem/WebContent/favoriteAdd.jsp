@@ -9,11 +9,18 @@
 </head>
 <body>
 <s:include value="top.jsp"></s:include>
+<div id="Wrapper">
+<div id="Main">
+<div class="sep20"></div>
+<div class="box">
 <h4>请输入收藏列表信息：</h4>
 <s:form action="favoriteService!add">
 	<s:textfield label="收藏列表名称" name="favorite.name" />
 	<s:submit value="提交" />
 </s:form>
 <a href="favoriteService!index">所有列表</a>
+</div>
+</div>
+</div>
 </body>
 </html>

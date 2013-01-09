@@ -13,7 +13,11 @@
 </script>
 </head>
 <body>
-<center>
+<s:include value="top.jsp"></s:include>
+<div id="Wrapper">
+<div id="Main">
+<div class="sep20"></div>
+<div class="box">
 <h4>请输入登录信息</h4>
 <s:form action="userCountService!login" theme="simple">
 	<!-- 等效于type为text的input标签-->
@@ -33,6 +37,9 @@
 				value="注册" onclick="goregist()"></td>
 		</tr>
 	</table>
-</s:form></center>
+</s:form>
+</div>
+</div>
+</div>
 </body>
 </html>

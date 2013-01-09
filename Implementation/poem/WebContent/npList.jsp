@@ -14,7 +14,9 @@
 	<a href="poemService!show?poem.pid=<s:property value="poem.pid" />"><s:property
 		value="poem.title" /></a>
 	<br>
+	<a href="authorService!show?author.aid=<s:property value="poem.author.aid" />">
 	<s:property value="%{poem.author.getName()}" />
+	</a>
 	<br>
 	<s:property value="poem.content" />
 	<br>

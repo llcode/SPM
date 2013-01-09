@@ -17,8 +17,11 @@
 	<br>
 	<a href="authorService!show?author.aid=<s:property value="%{author.getAid()}" />"> <s:property value="%{author.getName()}" /></a>
 	<br>
+<<<<<<< HEAD
 	<s:property value="%{author.getName()}" />
 	<br>
+=======
+>>>>>>> revert some changes
 	<s:property value="content" />
 	<br>
 	<hr>

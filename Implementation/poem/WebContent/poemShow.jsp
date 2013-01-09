@@ -13,8 +13,8 @@
 <s:property value="poem.title" />
 <br>
 <a
-	href="authorService!show?author.aid=<s:property value="poem.author.aid" />"></a>
-<br>
+	href="authorService!show?author.aid=<s:property value="poem.author.aid" />">
+<s:property value="poem.author.name" /></a>
 <br>
 <p>内容：</p>
 <s:property value="poem.content" />
@@ -41,7 +41,8 @@
 
 <!-- UY BEGIN -->
 <div id="uyan_frame"></div>
-<script type="text/javascript" id="UYScript" src="http://v1.uyan.cc/js/iframe.js?UYUserId=1730412" async=""></script>
+<script type="text/javascript" id="UYScript"
+	src="http://v1.uyan.cc/js/iframe.js?UYUserId=1730412" async=""></script>
 <!-- UY END -->
 
 </body>

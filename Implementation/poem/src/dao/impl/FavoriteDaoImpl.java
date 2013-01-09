@@ -1,7 +1,6 @@
 package dao.impl;
 
 import java.util.List;
-import java.util.Set;
 
 import org.hibernate.Criteria;
 import org.hibernate.Hibernate;
@@ -26,10 +25,6 @@ public class FavoriteDaoImpl extends BaseDaoImpl implements FavoriteDao {
 		Session session = sessionFactory.openSession();
 		favorite = (Favorite) session.get(Favorite.class, favorite.getFid());
 		Hibernate.initialize(favorite.getPoemLists());
-		Set<Poem> poemLists = favorite.getPoemLists();
-		for (Poem poem : poemLists) {
-			Hibernate.initialize(poem.getAuthor());
-		}
 		session.close();
 		return favorite;
 	}

@@ -30,7 +30,6 @@ public class PoemDaoImpl extends BaseDaoImpl implements PoemDao {
 		if (poem != null) {
 			Hibernate.initialize(poem.getAuthor());
 			Hibernate.initialize(poem.getFavoriteLists());
-			Hibernate.initialize(poem.getNewLists());
 			session.close();
 			return poem;
 		} else {
@@ -78,11 +77,6 @@ public class PoemDaoImpl extends BaseDaoImpl implements PoemDao {
 		myNewPoem.setCount(0);
 		myNewPoem.setCreatedate(new Date(System.currentTimeMillis()));
 		template.save(myNewPoem);
-	}
-	
-	@Override
-	public void removeFromNewPoems(MyNewPoem myNewPoem) {
-		template.delete(myNewPoem);
 	}
 
 	@SuppressWarnings("unchecked")

@@ -28,10 +28,10 @@ public class UserCountDaoImplTest {
 
 	@Test
 	public void testFindById() {
-		UserCount user = userCountDao.findById(300);
-		log.info("user name find by 300 : " + user.getName());
+		UserCount user = userCountDao.findById(301);
+		log.info("user name find by dao : " + user.getName());
 		assertNotNull(user);
-		assertEquals("test", user.getName());
+		assertEquals("keke", user.getName());
 
 		log.info("find a non existing id : 3000");
 		user = userCountDao.findById(3000);
@@ -121,20 +121,20 @@ public class UserCountDaoImplTest {
 
 	@Test
 	public void testUpdateUserCount() {
-		UserCount user = userCountDao.findById(300);
-		assertEquals("test", user.getName());
+		UserCount user = userCountDao.findById(301);
+		assertEquals("keke", user.getName());
 		log.info("before we update, user name is: " + user.getName());
 		user.setName("kerie");
 		userCountDao.updateUserCount(user);
 
-		user = userCountDao.findById(300);
+		user = userCountDao.findById(301);
 		log.info("after we update, user name is: " + user.getName());
 		assertEquals("kerie", user.getName());
 
 		log.info("we should set the name back after testing, or we will fail the test next time");
-		user.setName("test");
+		user.setName("keke");
 		userCountDao.updateUserCount(user);
-		assertEquals("test", user.getName());
+		assertEquals("keke", user.getName());
 	}
 
 }

@@ -17,6 +17,8 @@
 	<br>
 	<a href="authorService!show?author.aid=<s:property value="%{author.getAid()}" />"> <s:property value="%{author.getName()}" /></a>
 	<br>
+	<s:property value="%{author.getName()}" />
+	<br>
 	<s:property value="content" />
 	<br>
 	<hr>

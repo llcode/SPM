@@ -4,7 +4,6 @@ import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -15,7 +14,6 @@ import org.springframework.context.support.FileSystemXmlApplicationContext;
 
 import dao.PoemDao;
 import domain.Favorite;
-import domain.MyNewPoem;
 import domain.Poem;
 
 public class PoemDaoImplTest {
@@ -37,51 +35,33 @@ public class PoemDaoImplTest {
 		poem.setPid(300);
 		poem = poemDao.findById(poem);
 		log.info("poem find by id title is : " + poem.getTitle());
+<<<<<<< HEAD
+		Assert.assertNotNull(poem);
+		Assert.assertEquals("ï¿½ï¿½ï¿½Ò°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ç¾°ï¿½ï¿½", poem.getTitle());
+=======
 		assertNotNull(poem);
 		assertEquals("Óæ¼Ò°Á¡¤ÈûÏÂÇïÀ´·ç¾°Òì", poem.getTitle());
+>>>>>>> changed junit test import library.
 
 		poem.setPid(3000);
-		log.info("find a non existing poem by id : 3000");
+		log.info("find a non existing id : 3000");
 		poem = poemDao.findById(poem);
 		assertNull(poem);
 	}
 
 	@Test
-	public void testSaveAndDeletePoem() {
-		Poem poem = new Poem();
-		poem.setTitle("a very special title");
-		poemDao.savePoem(poem);
-		log.info("save a very special poem with title : " + poem.getTitle());
+	public void testSavePoem() {
+		fail("Not yet implemented");
+	}
 
-		Poem newPoem = poemDao.queryByTitle("a very special title").get(0);
-		assertNotNull(newPoem);
-		assertEquals(newPoem.getTitle(), "a very special title");
-
-		poemDao.deletePoem(newPoem);
+	@Test
+	public void testDeletePoem() {
+		fail("Not yet implemented");
 	}
 
 	@Test
 	public void testUpdate() {
-		Poem poem = new Poem();
-		poem.setPid(300);
-		poem = poemDao.findById(poem);
-		log.info("get poem with title : " + poem.getTitle());
-		assertNotNull(poem);
-		assertEquals(poem.getTitle(), "Óæ¼Ò°Á¡¤ÈûÏÂÇïÀ´·ç¾°Òì");
-
-		log.info("chage title to \"a special title\"");
-		poem.setTitle("a special title");
-		poemDao.update(poem);
-		poem = poemDao.findById(poem);
-		assertNotNull(poem);
-		assertTrue(poem.getTitle().equalsIgnoreCase("a special title"));
-
-		poem.setTitle("Óæ¼Ò°Á¡¤ÈûÏÂÇïÀ´·ç¾°Òì");
-		poemDao.update(poem);
-		log.info("change title back to Óæ¼Ò°Á¡¤ÈûÏÂÇïÀ´·ç¾°Òì");
-		poem = poemDao.findById(poem);
-		assertNotNull(poem);
-		assertEquals(poem.getTitle(), "Óæ¼Ò°Á¡¤ÈûÏÂÇïÀ´·ç¾°Òì");
+		fail("Not yet implemented");
 	}
 
 	@Test
@@ -142,67 +122,18 @@ public class PoemDaoImplTest {
 	}
 
 	@Test
-	public void testAddToAndRemoveFromNewPoems() {
-		Poem poem = new Poem();
-		poem.setPid(300);
-		poem = poemDao.findById(poem);
-		log.info("poem added to new poem list is : " + poem.getTitle());
-
-		Set<MyNewPoem> oldnpl = poem.getNewLists();
-		log.info("old poem list size is : " + oldnpl.size());
-		assertNotNull(oldnpl);
-		for (MyNewPoem myNewPoem : oldnpl) {
-			log.info("poem already in new poem list: " + myNewPoem.getNewpid());
-		}
-
-		MyNewPoem myNewPoem = new MyNewPoem();
-		myNewPoem.setPoem(poem);
-		poemDao.addToNewPoems(myNewPoem);
-		poem = poemDao.findById(poem);
-
-		Set<MyNewPoem> newnpl = poem.getNewLists();
-		assertNotNull(newnpl);
-		log.info("new poem list size is : " + newnpl.size());
-		for (MyNewPoem myNewPoem2 : newnpl) {
-			log.info("now poem is in new poem list: " + myNewPoem2.getNewpid());
-		}
-
-		log.info("the total new poem list size should increased by 1");
-		assertEquals(1, newnpl.size() - oldnpl.size());
-
-		log.info("set new poem list back");
-		poemDao.removeFromNewPoems(myNewPoem);
-		
-		poem = poemDao.findById(poem);
-		Set<MyNewPoem> newnpl2 = poem.getNewLists();
-		log.info("the size after update : " + newnpl2.size());
-		assertEquals(oldnpl.size(), newnpl2.size());
+	public void testAddToNewPoems() {
+		fail("Not yet implemented");
 	}
 
 	@Test
 	public void testQueryByTitle() {
-		List<Poem> plist = poemDao.queryByTitle("ä½ÏªÉ³");
-		List<Integer> ids = new ArrayList<Integer>();
-		for (Poem poem : plist) {
-			ids.add(poem.getPid());
-			log.info("poem in query by title ä½ÏªÉ³ : " + poem.getTitle());
-		}
-		assertNotNull(plist);
-		assertTrue(ids.contains(302));
-		assertTrue(ids.contains(303));
+		fail("Not yet implemented");
 	}
 
 	@Test
 	public void testQueryByContent() {
-		List<Poem> plist = poemDao.queryByContent("Ìì");
-		List<Integer> ids = new ArrayList<Integer>();
-		for (Poem poem : plist) {
-			ids.add(poem.getPid());
-			log.info("poem in query by content Ìì : " + poem.getTitle());
-		}
-		assertNotNull(plist);
-		assertTrue(ids.contains(301));
-		assertTrue(ids.contains(302));
+		fail("Not yet implemented");
 	}
 
 }

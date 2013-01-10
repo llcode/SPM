@@ -32,5 +32,6 @@
 </s:iterator></div>
 </div>
 </div>
+<s:include value="bottom.jsp"></s:include>
 </body>
 </html>

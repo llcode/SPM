@@ -11,16 +11,31 @@
 <s:include value="top.jsp"></s:include>
 <div id="Wrapper">
 <div id="Main">
-<div class="sep20"></div>
+<div class="sep10"></div>
 <div class="box">
-<h4>请输入收藏列表信息：</h4>
-<s:form action="favoriteService!add">
-	<s:textfield label="收藏列表名称" name="favorite.name" />
-	<s:submit value="提交" />
-</s:form>
-<a href="favoriteService!index">所有列表</a>
+<div class="cell">
+<div class="fr" style="margin: 16px 10px 0px 0px;"><a
+	href="favoriteService!index">返回列表</a></div>
+<h1>请输入收藏列表信息：</h1>
+</div>
+<div class="inner"><s:form action="favoriteService!add"
+	theme="simple">
+	<table cellpadding="5" cellspacing="0" border="0" width="100%">
+		<tr>
+			<td width="120" align="right">收藏列表名称</td>
+			<td width="auto" align="left"><s:textfield cssClass="sl"
+				name="favorite.name" /></td>
+		</tr>
+		<tr>
+			<td width="120" align="right"></td>
+			<td width="auto" align="left"><s:submit
+				cssClass="super normal button" value="添加"></s:submit></td>
+		</tr>
+	</table>
+</s:form></div>
 </div>
 </div>
 </div>
+<s:include value="bottom.jsp"></s:include>
 </body>
 </html>

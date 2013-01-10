@@ -17,6 +17,8 @@ public class PoemAction {
 	private Poem poem;
 	private String condition;
 	private String query;
+	private String flash;
+
 	private PoemDao poemDao;
 	private AuthorDao authorDao;
 	private MyNewPoemDao myNewPoemDao;
@@ -50,6 +52,14 @@ public class PoemAction {
 
 	public void setQuery(String query) {
 		this.query = query;
+	}
+
+	public String getFlash() {
+		return flash;
+	}
+
+	public void setFlash(String flash) {
+		this.flash = flash;
 	}
 
 	public Poem getPoem() {
@@ -94,9 +104,16 @@ public class PoemAction {
 	}
 
 	public String add() {
+		if (poem.getTitle().length() == 0) {
+			flash = "Title can't be empty!";
+		}
+		if (poem.getContent().length() == 0) {
+			flash += "Content can't be empty!";
+		}
 		Author author = authorDao.findByName(poem.getAuthor().getName());
 		if (author == null) {
 			poem.setAuthor(null);
+			flash += "Can't find the author, please add it first!";
 			return "add";
 		} else {
 			poem.setAuthor(author);

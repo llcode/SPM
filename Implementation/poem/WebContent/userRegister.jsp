@@ -40,45 +40,51 @@
 </script>
 </head>
 <body>
+<s:include value="top.jsp"></s:include>
 <div id="Wrapper">
 <div id="Main">
-<div class="sep20"></div>
+<div class="sep10"></div>
 <div class="box">
-<h4>请输入登录信息</h4>
+<div class="cell">
+<div class="fr" style="margin: 16px 10px 0px 0px;"><a
+	href="userLogin.jsp">登录</a></div>
+<h1>请输入注册信息</h1>
+</div>
+<div class="inner">
 <s:form action="userCountService!regist" theme="simple"
 	onsubmit="return checkSubmit();">
 	<!-- 等效于type为text的input标签-->
 	<!-- 如果action中的属性是一个封装类型，属性的赋值是按照对象导航的方式来寻找的 -->
-	<table border="0">
-
+	<table cellpadding="5" cellspacing="0" border="0" width="100%">
 		<tr>
-			<td>用&nbsp;户&nbsp;名 <s:textfield label="用户名"
-				name="usercount.name"></s:textfield> <font color="red">${userNameError}</font>
-			<br>
-			<font color="red">(至少8个字符，英文字母、数字、下划线，以英文字母开头)</font></td>
+			<td width="120" align="right">用户名</td>
+			<td width="auto" align="left"><s:textfield label="用户名"
+				name="usercount.name" cssClass="sl"></s:textfield><font color="red">${userNameError}</font>
+			<font color="red">(至少8个字符，英文字母、数字、下划线开头)</font></td>
 		</tr>
 		<tr>
-			<td>&nbsp;密&nbsp;码&nbsp; <s:password label="密码"
-				name="usercount.password"></s:password></td>
+			<td width="120" align="right">密码</td>
+			<td width="auto" align="left"><s:password name="usercount.password" cssClass="sl"></s:password></td>
 		</tr>
 		<tr>
-			<td>确认密码 <s:password label="" name="password2"></s:password></td>
+			<td width="120" align="right">确认密码</td> 
+			<td width="auto" align="left"><s:password name="password2" cssClass="sl"></s:password></td>
 		</tr>
 		<tr>
-			<td>E-mail <s:textfield label="E-mail" name="usercount.email" />
+			<td width="120" align="right">电子邮件</td>
+			<td width="auto" align="left"><s:textfield name="usercount.email" cssClass="sl"/>
 			<font color="red">${userEmailError}</font></td>
 		</tr>
 		<tr>
-
-			<td><s:submit value="提交"></s:submit> <input type="button"
-				value="返回" onclick="gologin()"></td>
+			<td width="120" align="right"></td>
+			<td width="auto" align="left"><s:submit value="提交" cssClass="super normal button"></s:submit></td>
 		</tr>
-
 	</table>
-
 </s:form>
 </div>
 </div>
 </div>
+</div>
+<s:include value="bottom.jsp"></s:include>
 </body>
 </html>

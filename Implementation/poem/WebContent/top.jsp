@@ -13,7 +13,7 @@
 <div style="padding-top: 6px;">
 <table>
 	<tr>
-		<td width="200" align="left"><a href="poemService!index">唐诗宋词学习网</a></td>
+		<td width="200" align="left"><b><a href="poemService!index">唐诗宋词学习网</a></b></td>
 		<td width="300" align="right"><a href="poemService!index">唐诗宋词</a>
 		&nbsp;&nbsp;&nbsp;<a href="authorService!index">诗人风采</a>
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>

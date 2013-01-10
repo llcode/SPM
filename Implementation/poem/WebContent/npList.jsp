@@ -11,29 +11,34 @@
 <s:include value="top.jsp"></s:include>
 <div id="Wrapper">
 <div id="Main">
-<div class="sep20"></div>
+<div class="sep10"></div>
 <div class="box">
+<div class="cell">
 <h1>生诗词列表</h1>
+</div>
 <s:iterator value="myNewPoems">
-	<a href="poemService!show?poem.pid=<s:property value="poem.pid" />"><s:property
-		value="poem.title" /></a>
-	<br>
-	<a href="authorService!show?author.aid=<s:property value="poem.author.aid" />">
-	<s:property value="%{poem.author.getName()}" />
-	</a>
-	<br>
-	<s:property value="poem.content" />
+	<div class="cell">
+	<div class="content">
+	<p><a
+		href="poemService!show?poem.pid=<s:property value="poem.pid" />"><s:property
+		value="poem.title" /></a> <span style="float: right; margin-right: 10px;">
+	<a
+		href="myNewPoemService!removePoem?myNewPoem.newpid=<s:property value="newpid"/>">删除</a></span>
 	<br>
 	<a
-		href="myNewPoemService!removePoem?myNewPoem.newpid=<s:property value="newpid"/>">从生诗词表删除</a>
-	<br><hr>
+		href="authorService!show?author.aid=<s:property value="poem.author.aid" />">
+	<s:property value="%{poem.author.getName()}" /> </a> <br>
+	<s:property value="poem.content" /></p>
+	</div>
+	</div>
 </s:iterator>
-开始测试吧
-<a href="myNewPoemService!goTest?mode=easy">简单</a>
-<a href="myNewPoemService!goTest?mode=normal">中等</a>
-<a href="myNewPoemService!goTest?mode=hard">困难</a>
+<div class="cell">开始测试吧&nbsp;&nbsp;&nbsp; <a
+	href="myNewPoemService!goTest?mode=easy">简单</a> <a
+	href="myNewPoemService!goTest?mode=normal">中等</a> <a
+	href="myNewPoemService!goTest?mode=hard">困难</a></div>
 </div>
 </div>
 </div>
+<s:include value="bottom.jsp"></s:include>
 </body>
 </html>

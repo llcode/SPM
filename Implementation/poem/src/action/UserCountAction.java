@@ -112,7 +112,6 @@ public class UserCountAction {
 	}
 
 	public String goMain() {
-		// TODO: Ask Lei Liang why put error messages in session?
 		ActionContext.getContext().getSession().put("userNameError", null);
 		ActionContext.getContext().getSession().put("userEmailError", null);
 

@@ -11,23 +11,26 @@
 <s:include value="top.jsp"></s:include>
 <div id="Wrapper">
 <div id="Main">
-<div class="sep20"></div>
+<div class="sep10"></div>
 <div class="box">
-成功登陆
-<br>
+<div class="cell">
+<div class="fr" style="margin: 16px 10px 0px 0px;"><a
+	href="favoriteAdd.jsp">添加更多列表</a></div>
+<h1>我的收藏列表</h1>
+</div>
 <s:iterator value="favoriteList">
-	<a href="favoriteService!show?favorite.fid=<s:property value="fid" />">
-	<s:property value="name" /></a>
-	<a href="favoriteService!edit?favorite.fid=<s:property value="fid" />">
-	编辑</a>
-	<a
+	<div class="cell"><a
+		href="favoriteService!show?favorite.fid=<s:property value="fid" />">
+	<s:property value="name" /></a>（共<s:property value="%{poemLists.size()}" />首）
+	<span style="float: right; margin-right: 10px;"> <a
+		href="favoriteService!edit?favorite.fid=<s:property value="fid" />">
+	编辑</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a
 		href="favoriteService!delete?favorite.fid=<s:property value="fid" />">
-	删除</a>
-	<br>
+	删除</a></span></div>
 </s:iterator>
-<a href="favoriteAdd.jsp">添加更多列表</a>
 </div>
 </div>
 </div>
+<s:include value="bottom.jsp"></s:include>
 </body>
 </html>

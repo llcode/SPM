@@ -6,40 +6,43 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>登录</title>
-<script type="text/javascript">
-	function goregist() {
-		window.location.href = "regist.jsp";
-	}
-</script>
 </head>
 <body>
 <s:include value="top.jsp"></s:include>
 <div id="Wrapper">
 <div id="Main">
-<div class="sep20"></div>
+<div class="sep10"></div>
 <div class="box">
-<h4>请输入登录信息</h4>
-<s:form action="userCountService!login" theme="simple">
+<div class="cell">
+<div class="fr" style="margin: 16px 10px 0px 0px;"><a
+	href="userRegister.jsp">注册</a></div>
+<h1>请输入登录信息</h1>
+</div>
+<div class="inner"><s:form action="userCountService!login"
+	theme="simple">
 	<!-- 等效于type为text的input标签-->
 	<!-- 如果action中的属性是一个封装类型，属性的赋值是按照对象导航的方式来寻找的 -->
-	<table border="0">
+	<table cellpadding="5" cellspacing="0" border="0" width="100%">
 		<tr>
-			<td>用&nbsp;户&nbsp;名 <s:textfield label="用户名"
-				name="usercount.name"></s:textfield></td>
+			<td width="120" align="right">用户名</td>
+			<td width="auto" align="left"><s:textfield name="usercount.name"
+				cssClass="sl"></s:textfield></td>
 		</tr>
 		<tr>
-			<td>&nbsp;密&nbsp;码&nbsp; <s:password label=""
-				name="usercount.password"></s:password></td>
+			<td width="120" align="right">密码</td>
+			<td width="auto" align="left"><s:password
+				name="usercount.password" cssClass="sl"></s:password></td>
 		</tr>
 		<tr>
-
-			<td><s:submit value="登录"></s:submit> <input type="button"
-				value="注册" onclick="goregist()"></td>
+			<td width="120" align="right"></td>
+			<td width="auto" align="left"><s:submit value="登录"
+				cssClass="super normal button"></s:submit></td>
 		</tr>
 	</table>
-</s:form>
+</s:form></div>
 </div>
 </div>
 </div>
+<s:include value="bottom.jsp"></s:include>
 </body>
 </html>

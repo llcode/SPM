@@ -46,9 +46,10 @@ public class Favorite {
 	// This method is used in FavoriteAction to check whether a poem is in poem list
 	// Because the Set contains method would check every property of poem including references.
 	// So they are impossible to be equal. ^-^
+	// Also we should user equals to compare two Integer not int.
 	public boolean hasPoem(Poem poem) {
 		for (Poem p : poemLists) {
-			if (p.getPid() == poem.getPid()) {
+			if (p.getPid().equals(poem.getPid())) {
 				return true;
 			}
 		}

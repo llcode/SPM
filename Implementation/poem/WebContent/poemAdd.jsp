@@ -18,6 +18,11 @@
 	href="poemService!index">返回列表</a></div>
 <h1>请输入诗词信息：</h1>
 </div>
+<s:if test="flash != null">
+<div class="yellow">
+<s:property value="flash"/>
+</div>
+</s:if>
 <div class="inner"><s:form action="poemService!add" theme="simple">
 	<table cellpadding="5" cellspacing="0" border="0" width="100%">
 		<tr>
@@ -60,5 +65,6 @@
 </div>
 </div>
 </div>
+<s:include value="bottom.jsp"></s:include>
 </body>
 </html>

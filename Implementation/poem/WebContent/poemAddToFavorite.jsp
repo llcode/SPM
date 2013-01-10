@@ -11,23 +11,27 @@
 <s:include value="top.jsp"></s:include>
 <div id="Wrapper">
 <div id="Main">
-<div class="sep20"></div>
+<div class="sep10"></div>
 <div class="box">
-<h4>添加诗歌到收藏</h4>
-添加
-<a href="poemService!show?poem.pid=<s:property value="poem.pid" />"><s:property
-	value="poem.title" /></a>
-到列表：
+<div class="cell">
+<div class="fr" style="margin: 16px 10px 0px 0px;"><a
+	href="poemService!index">返回列表</a></div>
+<h1>添加诗歌到收藏</h1>
+</div>
+<div class="cell">添加 <a
+	href="poemService!show?poem.pid=<s:property value="poem.pid" />"><s:property
+	value="poem.title" /></a> 到列表：
+</div>
 <s:form action="favoriteService!addPoem">
 	<s:hidden name="poem.pid"></s:hidden>
 	<s:iterator value="list" status="st">
 		<s:checkbox label="%{name}" name="chklist[%{#st.index}]"
 			value="%{hasPoem(poem)}" fieldValue="%{fid}"></s:checkbox>
 	</s:iterator>
-	<s:submit></s:submit>
-</s:form>
+	<s:submit cssClass="super normal button" value="添加"></s:submit>
+</s:form></div>
 </div>
 </div>
-</div>
+<s:include value="bottom.jsp"></s:include>
 </body>
 </html>
